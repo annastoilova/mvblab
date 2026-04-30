@@ -67,6 +67,26 @@ nav {
 
 .nav-logo span { color: var(--gold); }
 
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
 .nav-cta {
   font-family: 'Clash Display', sans-serif;
   font-weight: 700;
@@ -1209,7 +1229,11 @@ footer {
 <!-- ═══ NAV ═══ -->
 <nav>
   <a href="#" class="nav-logo">THE MVB <span>LAB.</span></a>
-  <a href="https://www.skool.com/mvb/about" class="nav-cta">Join the Lab</a>
+  <div class="nav-links">
+    <a href="https://mvblab.com/linkedin" class="nav-link">LinkedIn</a>
+    <a href="https://mvblab.com/branding" class="nav-link">Branding</a>
+    <a href="https://www.skool.com/mvb/about" class="nav-cta">Join the Lab</a>
+  </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
