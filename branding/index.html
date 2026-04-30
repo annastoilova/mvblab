@@ -1,1 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7-Day Brand Sprint Cheatsheet | THE MVB LAB.</title>
+<meta name="description" content="Build your Minimum Viable Brand in 7 days. Every framework, formula, and prompt from the MVB Lab 7-Day Brand Sprint.">
+<meta property="og:title" content="7-Day Brand Sprint Cheatsheet | THE MVB LAB.">
+<meta property="og:description" content="Build your Minimum Viable Brand in 7 days. No agency. No cringe. Just you.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; }
+  #root { min-height: 100vh; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useMemo } = React;
 
+
+
+const sections = [
+  {
+    label: "DAY 1", title: "Who", titleAccent: "Are You?", shortTitle: "Identity",
+    cards: [
+      { type: "golden-rule", id: "gr1", title: "Find Your Substance First", content: "Before we build the brand, we need the substance. Your unique advantage is how you solve a specific problem. Not what you know. How you do it. That's your special sauce." },
+      { type: "fillable", id: "fill1", title: "Your Unique Value Proposition", outputTemplate: "I help {0} {1} by {2}.", fields: [
+        { key: "0", label: "I help...", placeholder: "e.g. introverted consultants" },
+        { key: "1", label: "Result (what they get)", placeholder: "e.g. get 10k followers without dancing on TikTok" },
+        { key: "2", label: "By... (your unique method)", placeholder: "e.g. AI-powered brand sprints" }
+      ]},
+      { type: "do-dont", id: "dd1", title: "UVP Gut Check", dos: ["Names a real, specific person with a real problem","Describes a tangible outcome they can picture","Highlights what makes YOUR approach different","Fits naturally in a bio or header"], donts: ["Tries to speak to \"everyone\"","Uses vague outcomes like \"grow\" or \"succeed\"","Sounds like every other coach or consultant","Requires a paragraph to explain"] },
+      { type: "tip-block", id: "tip1", title: "Your Proof of Brilliance", content: "Pick one impressive thing you've done. Founded a profitable business? Hit a specific MRR? Acquired X users? Built something in 48 hours? This becomes your credibility signal for Day 5." },
+      { type: "quiz", id: "q1", question: "What is the difference between your UVP and your bio?", answer: "Your UVP is the substance. Your bio is where you put it. The UVP is a single sentence that names the person, the result, and your method. It goes in headers, intros, and bios across every platform." }
+    ]
+  },
+  {
+    label: "DAY 2", title: "What Do You", titleAccent: "Look Like?", shortTitle: "Visuals",
+    cards: [
+      { type: "fillable", id: "fill2", title: "Your Brand Personality", outputTemplate: "My brand personality: {0}, {1}, {2}.", fields: [
+        { key: "0", label: "Adjective 1", placeholder: "e.g. bold" },
+        { key: "1", label: "Adjective 2", placeholder: "e.g. minimalist" },
+        { key: "2", label: "Adjective 3", placeholder: "e.g. rebellious" }
+      ]},
+      { type: "tabs", id: "t1", title: "Brand Archetypes", tabs: [
+        { label: "The Authority", emoji: "🏛️", content: "Professional / Stoic. Deep blues and slate tones. Font: Inter. Clean lines, structured layouts. Think: trusted advisor energy. Your content leads with data, proof, and clear thinking." },
+        { label: "The Disruptor", emoji: "⚡", content: "Bold / Rebellious. Black with electric accent colors. Font: Montserrat Bold. High contrast, direct gaze in photos. Think: industry challenger energy. Your content leads with hot takes and contrarian views." },
+        { label: "The Guide", emoji: "🌿", content: "Casual / Warm. Earthy tones or soft pastels. Font: Open Sans. Approachable layouts, warm lighting in photos. Think: trusted mentor energy. Your content leads with stories and gentle reframes." }
+      ]},
+      { type: "categories", id: "c1", title: "Your Visual System Checklist", items: [
+        { emoji: "📸", name: "The Headshot", desc: "Match your 3 adjectives. Bold? High contrast, direct gaze. Minimalist? Neutral tones, calm expression. Use window light and a clean background." },
+        { emoji: "🎨", name: "Two Colors", desc: "Color 1 (Base): white, dark grey, or black. Color 2 (Pop): one accent color. That's it. Use them everywhere." },
+        { emoji: "🔤", name: "Two Fonts", desc: "Font 1 (Headlines): bold and high clarity. Font 2 (Body): highly readable. Pick two. Stick to them across every platform." },
+        { emoji: "🖼️", name: "The Moodboard", desc: "4 panels: your headshot, your logo/name, your color palette and fonts, and one anchor image representing your unique advantage." }
+      ]},
+      { type: "fillable-prompt", id: "p1", title: "AI Prompt: Moodboard Generator", emoji: "🖼️", important: true, promptTemplate: "I'm building a personal brand moodboard. My brand name is {0}. My UVP is: \"I help {1} {2} by {3}.\" My 3 brand adjectives are: {4}, {5}, {6}. Create a detailed moodboard brief with: 1) Color palette (2 colors: one base, one accent) with hex codes, 2) Two font pairings (one headline, one body), 3) Photography style direction for my headshot, 4) One anchor image concept that represents my unique advantage, 5) Overall visual mood description. Keep it cohesive and authentic to the adjectives.", fields: [
+        { key: "0", label: "Your brand name", placeholder: "e.g. The Visibility Lab" },
+        { key: "1", label: "I help... (from Day 1)", placeholder: "e.g. introverted consultants" },
+        { key: "2", label: "Result (from Day 1)", placeholder: "e.g. get visible online" },
+        { key: "3", label: "By... (from Day 1)", placeholder: "e.g. AI-powered brand sprints" },
+        { key: "4", label: "Adjective 1", placeholder: "e.g. bold" },
+        { key: "5", label: "Adjective 2", placeholder: "e.g. minimalist" },
+        { key: "6", label: "Adjective 3", placeholder: "e.g. rebellious" }
+      ]},
+      { type: "fillable-prompt", id: "p2", title: "AI Prompt: Brand Name Generator", emoji: "✨", promptTemplate: "My UVP is: \"I help {0} {1} by {2}.\" My brand adjectives are {3}, {4}, {5}. Generate 20 short, punchy brand names that feel authentic to this personality. Avoid generic marketing words.", fields: [
+        { key: "0", label: "I help...", placeholder: "e.g. introverted consultants" },
+        { key: "1", label: "Result", placeholder: "e.g. get visible online" },
+        { key: "2", label: "By...", placeholder: "e.g. AI-powered brand sprints" },
+        { key: "3", label: "Adjective 1", placeholder: "e.g. bold" },
+        { key: "4", label: "Adjective 2", placeholder: "e.g. minimalist" },
+        { key: "5", label: "Adjective 3", placeholder: "e.g. rebellious" }
+      ]},
+      { type: "fillable-prompt", id: "p3", title: "AI Prompt: Logo Concept", emoji: "🎨", promptTemplate: "A minimalist, high-quality logo mark for a personal brand called {0}. The brand personality is {1}, {2}, {3}. The design should be clean, professional, and work well as a social media profile icon. White background.", fields: [
+        { key: "0", label: "Brand name", placeholder: "e.g. The Visibility Lab" },
+        { key: "1", label: "Adjective 1", placeholder: "e.g. bold" },
+        { key: "2", label: "Adjective 2", placeholder: "e.g. minimalist" },
+        { key: "3", label: "Adjective 3", placeholder: "e.g. rebellious" }
+      ]},
+      { type: "quiz", id: "q2", question: "Why do you only need two colors and two fonts?", answer: "Constraint creates consistency. When you limit to two colors and two fonts, everything you create automatically looks cohesive. Your audience starts recognizing your content before they read a word." }
+    ]
+  },
+  {
+    label: "DAY 3", title: "Who Are You", titleAccent: "Talking To?", shortTitle: "Audience",
+    cards: [
+      { type: "golden-rule", id: "gr2", title: "Find the Signal in Their Brain", content: "Your brand is not for everyone. It's for a specific person who \"gets it.\" Go deeper than demographics. Find what keeps them up at 2 AM and what \"winning\" looks like in their world." },
+      { type: "fillable", id: "fill3", title: "The Internal Monologue Prompt", outputTemplate: "I help {0} achieve {1} without {2}. Act as a world-class researcher. Generate a list of the top 5 'Internal Monologues' this person has when they think about their brand. What are they afraid of? What do they secretly hope is true? Keep it raw and human.", fields: [
+        { key: "0", label: "Target Audience", placeholder: "e.g. solo consultants over 40" },
+        { key: "1", label: "Result", placeholder: "e.g. a steady flow of inbound leads" },
+        { key: "2", label: "The Cringe", placeholder: "e.g. cold DMs and cringey self-promotion" }
+      ]},
+      { type: "tip-block", id: "tip2", title: "If You're Stuck Defining Your Person", content: "Look at your real history. Who has already asked you for help? Who replies to your posts? Who has paid you or would? Who naturally respects your thinking? List 5 real individuals. Identify the pattern. Describe that ONE person." },
+      { type: "do-dont", id: "dd2", title: "Audience Signal Quality", dos: ["Based on real people you've helped before","Describes one specific type of person","Captures an emotional truth they'd recognize","The resonance sentence makes you say \"YES\""], donts: ["Based on who you wish would follow you","Describes a broad demographic group","Sounds like a marketing textbook persona","The resonance sentence feels generic"] },
+      { type: "quiz", id: "q3", question: "What is the \"Resonance Sentence\" and why does it matter?", answer: "It's the one line from the AI-generated Internal Monologues that made you say \"that's exactly what my people feel.\" It becomes your content goldmine for the next 30 days because it reflects a real emotional truth your audience holds." }
+    ]
+  },
+  {
+    label: "DAY 4", title: "What Is", titleAccent: "Your Story?", shortTitle: "Story",
+    cards: [
+      { type: "golden-rule", id: "gr3", title: "Your Story Is Not Your Biography", content: "Your story is the bridge between your experience and your positioning. Don't list achievements. Identify the pattern: the problem you solved repeatedly, the lesson you learned the hard way, and the belief you now hold that others don't." },
+      { type: "fillable", id: "fill4", title: "The Narrative Framework", outputTemplate: "After years of {0}, I realised that {1}. Most people focus on {2}. I focus on {3}. That shift changes everything for {4}.", fields: [
+        { key: "0", label: "After years of...", placeholder: "e.g. building products nobody saw" },
+        { key: "1", label: "I realised that...", placeholder: "e.g. visibility is a skill, not luck" },
+        { key: "2", label: "Most people focus on...", placeholder: "e.g. more content" },
+        { key: "3", label: "I focus on...", placeholder: "e.g. sharper positioning" },
+        { key: "4", label: "That shift changes everything for...", placeholder: "e.g. founders who are great at the work but invisible online" }
+      ]},
+      { type: "fillable", id: "fill4b", title: "The Belief Shift Exercise", outputTemplate: "I used to believe {0}. Then I learned {1}. Now I believe {2}. The thing nobody says out loud in this space is {3}.", fields: [
+        { key: "0", label: "I used to believe...", placeholder: "e.g. great work speaks for itself" },
+        { key: "1", label: "Then I learned...", placeholder: "e.g. nobody finds you if you don't show up" },
+        { key: "2", label: "Now I believe...", placeholder: "e.g. positioning is the real product" },
+        { key: "3", label: "The thing nobody says out loud is...", placeholder: "e.g. most personal brands are built on imitation, not identity" }
+      ]},
+      { type: "tip-block", id: "tip3", title: "Find the \"Receipt\"", content: "A story is 10x more powerful with a visual. Find a photo that proves it: a screenshot of a specific result, a photo of you in the trenches, a before vs after of a project, or a simplified chart showing the shift you described." },
+      { type: "quiz", id: "q4", question: "What separates a good founder story from a forgettable one?", answer: "A contrarian belief. \"Most people focus on X. I focus on Y.\" That's the line that separates you from everyone else in your space. Without it, your story sounds like everyone else's journey post." }
+    ]
+  },
+  {
+    label: "DAY 5", title: "Your Winning", titleAccent: "Profile", shortTitle: "Profile",
+    cards: [
+      { type: "categories", id: "c2", title: "Profile Assembly (Days 1 to 4)", items: [
+        { emoji: "💫", name: "Headline (Day 1)", desc: "Use your UVP as your headline or bio. This is the first thing people read. Make it count." },
+        { emoji: "🎨", name: "Visuals (Day 2)", desc: "Upload your headshot and moodboard banner. Your visual identity should be recognizable at a glance." },
+        { emoji: "🎯", name: "Positioning (Day 4)", desc: "Rewrite your bio using your narrative. Clear out old, irrelevant info. If it doesn't support your UVP, it's a distraction." },
+        { emoji: "🟢", name: "Credibility Signal (Day 4)", desc: "Place your \"Receipt\" somewhere prominent. Featured section on LinkedIn. Pinned post on X. Make it visible." }
+      ]},
+      { type: "fillable", id: "fill5", title: "Your Profile Decisions", outputTemplate: "My target platform is {0}. This profile exists to {1}.", fields: [
+        { key: "0", label: "My target platform is...", placeholder: "e.g. LinkedIn" },
+        { key: "1", label: "This profile exists to...", placeholder: "e.g. attract coaching clients" }
+      ]},
+      { type: "tabs", id: "t2", title: "Profile Intention Guide", tabs: [
+        { label: "Attract Clients", emoji: "🎯", content: "Your profile is a sales page. Lead with the result you deliver. Feature testimonials and case studies. Every section should answer: \"Why should I work with this person?\"" },
+        { label: "Build Authority", emoji: "🏛️", content: "Your profile is a thought leadership hub. Lead with your contrarian belief. Feature your best content and original frameworks. Every section should answer: \"Why should I listen to this person?\"" },
+        { label: "Attract Peers", emoji: "🤝", content: "Your profile is a signal to high-level operators. Lead with what you've built. Feature collaborations and shared projects. Every section should answer: \"Is this person at my level?\"" },
+        { label: "Validate Ideas", emoji: "🧪", content: "Your profile is a public lab. Lead with what you're currently exploring. Feature experiments and early results. Every section should answer: \"What's this person building right now?\"" }
+      ]},
+      { type: "golden-rule", id: "gr4", title: "One Platform. One Intention.", content: "Stop trying to be everywhere. Pick one platform where your target audience actually hangs out. Delete or ignore the rest for now. Remove the noise. Everything on your chosen profile must serve one clear function." },
+      { type: "quiz", id: "q5", question: "Why should you choose just one primary platform?", answer: "Focus compounds. Spreading across five platforms means you're mediocre on all of them. Owning one platform means your audience associates that space with you. You become the go-to person there." }
+    ]
+  },
+  {
+    label: "DAY 6", title: "How Do You", titleAccent: "Validate?", shortTitle: "Validate",
+    cards: [
+      { type: "glossary", id: "g1", title: "Key Validation Terms", terms: [
+        { term: "MVR (Minimum Viable Resource)", definition: "The smallest possible asset that provides an immediate win. Not an ebook. A shortcut. Think: 1-page PDF, Notion template, a specific AI prompt, or a 2-minute screen share." },
+        { term: "Hand-Raiser Post", definition: "A post designed to measure intent before you build anything big. You describe your resource and ask people to comment a keyword to get it. The comments are your proof." },
+        { term: "Level 1: Interest", definition: "People comment to ask for the resource. This validates your topic." },
+        { term: "Level 2: Quality", definition: "People say \"This is exactly what I needed.\" This validates your unique advantage." },
+        { term: "Level 3: Monetization", definition: "People ask if you offer a deeper service. This validates your future income." }
+      ]},
+      { type: "fillable", id: "fill6", title: "The Hand-Raiser Post Framework", outputTemplate: "I've spent {0} solving {1} using {2}. I realized most people struggle with {3}, so I built {4} to skip that step. I'm giving this away to 10 people today to test the system. Comment \"{5}\" below and I'll send it over.", fields: [
+        { key: "0", label: "Time", placeholder: "e.g. 3 years" },
+        { key: "1", label: "Problem", placeholder: "e.g. personal brand positioning" },
+        { key: "2", label: "Unique Advantage", placeholder: "e.g. AI-assisted brand sprints" },
+        { key: "3", label: "Industry Friction", placeholder: "e.g. trying to figure out what to post" },
+        { key: "4", label: "Name of Resource", placeholder: "e.g. The Content GPS Template" },
+        { key: "5", label: "Comment Word", placeholder: "e.g. GPS" }
+      ]},
+      { type: "numbers", id: "n1", title: "The Validation Threshold", stats: [
+        { value: "3+", label: "Hand Raisers", detail: "If 3+ people raise their hand, you have a viable brand" },
+        { value: "1", label: "MVR", detail: "One lean resource that solves ONE specific problem from your UVP" },
+        { value: "24h", label: "Pivot Window", detail: "If Day 6 was quiet, update and re-post within 24 hours" }
+      ]},
+      { type: "quiz", id: "q6", question: "Why use a Hand-Raiser post instead of just sharing a link?", answer: "A link measures clicks. A Hand-Raiser measures intent. When someone comments a keyword publicly, they're signaling commitment. That's a fundamentally different level of validation than a passive click." }
+    ]
+  },
+  {
+    label: "DAY 7", title: "Where Do You", titleAccent: "Go Next?", shortTitle: "Momentum",
+    cards: [
+      { type: "do-dont", id: "dd3", title: "Reading Your Validation Signals", dos: ["\"How?\" questions = your next micro-resources","\"Yeah, but...\" objections = your next authority posts","3+ people ask the same thing = build a resource for it","DMs asking for deeper help = future paid offer signal"], donts: ["Ignoring the questions in your comments","Assuming silence means failure (it means your signal is muffled)","Building a full course before validating demand","Waiting for \"enough\" data before taking action"] },
+      { type: "fillable", id: "fill7", title: "Your Weekly Rhythm", outputTemplate: "{0}: {1}
+{2}: {3}
+{4}: {5}", fields: [
+        { key: "0", label: "Post day 1", placeholder: "e.g. Monday" },
+        { key: "1", label: "What you'll post", placeholder: "e.g. Document a decision I'm making" },
+        { key: "2", label: "Post day 2", placeholder: "e.g. Wednesday" },
+        { key: "3", label: "What you'll post", placeholder: "e.g. Share a tip, tool, or resource" },
+        { key: "4", label: "Post day 3", placeholder: "e.g. Friday" },
+        { key: "5", label: "What you'll post", placeholder: "e.g. Celebrate a win or lesson learned" }
+      ], exampleNote: "Example: Mon = Document a decision. Wed = Share a tip or tool. Fri = Celebrate a win. Pick whatever days work for you." },
+      { type: "numbers", id: "n2", title: "The 30-Day Authority System", stats: [
+        { value: "20", label: "Minutes / Day", detail: "Engage with 5 dream peers (potential clients or partners)" },
+        { value: "10", label: "Minutes / Day", detail: "Reply to every single comment on your own posts" },
+        { value: "3", label: "Posts / Week", detail: "Stick to your Monday / Wednesday / Friday rhythm" }
+      ]},
+      { type: "fillable", id: "fill7b", title: "Your 30-Day Commitment", outputTemplate: "For the next 30 days, I will build authority around {0} for {1}.", fields: [
+        { key: "0", label: "Topic / niche", placeholder: "e.g. AI-powered personal branding" },
+        { key: "1", label: "Audience", placeholder: "e.g. coaches and consultants going solo" }
+      ]},
+      { type: "link-card", id: "lk1", title: "Monthly & Weekly Social Planner", description: "Use this spreadsheet to plan and track your content rhythm across weeks and months.", url: "https://docs.google.com/spreadsheets/d/1WTCZJzDMwNvFWBJk0Bbl3Fj8sp8HROO-/edit?gid=819468474#gid=819468474", linkText: "Open Social Planner →" },
+      { type: "tip-block", id: "tip4", title: "If Day 6 Was Quiet", content: "Don't panic. This is the most valuable data you can get. It means your advantage is there, but your signal is muffled. Go narrower (a more painful, specific problem), go louder (challenge a common industry lie), or go smaller (a 1-page micro-win). Pick one lever, update your profile, and re-post within 24 hours." },
+      { type: "quiz", id: "q7", question: "What is the single most important thing to do after the 7-Day Sprint?", answer: "Show up 3 times a week with actual brilliance. Your brand is not a one-and-done project. It's a living system. The weekly rhythm is what turns a 7-day sprint into a compounding growth engine." }
+    ]
+  }
+];
+
+const allSearchableItems = [];
+sections.forEach((s, si) => { s.cards.forEach((c, ci) => {
+  const t = [c.title||"",c.content||"",c.question||"",c.answer||"",c.prompt||"",c.promptTemplate||"",c.description||"",...(c.dos||[]),...(c.donts||[]),...(c.steps||[]).map(s=>s.text),...(c.items||[]).map(i=>`${i.name} ${i.desc}`),...(c.tabs||[]).map(t=>`${t.label} ${t.content}`),...(c.terms||[]).map(t=>`${t.term} ${t.definition}`),...(c.stats||[]).map(s=>`${s.label} ${s.detail}`),...(c.fields||[]).map(f=>f.label)].join(" ").toLowerCase();
+  allSearchableItems.push({ sectionIdx:si, cardIdx:ci, text:t, id:c.id });
+});});
+
+window.BrandSprintCheatSheet = function BrandSprintCheatSheet() {
+  const [expandedTip, setExpandedTip] = useState(null);
+  const [activeTab, setActiveTab] = useState({});
+  const [copiedId, setCopiedId] = useState(null);
+  const [revealedQuiz, setRevealedQuiz] = useState({});
+  const [expandedTerms, setExpandedTerms] = useState({});
+  const [starred, setStarred] = useState({});
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeDay, setActiveDay] = useState(0);
+  const [completedDays, setCompletedDays] = useState({});
+  const [fillValues, setFillValues] = useState({});
+
+  const isSearching = searchQuery.trim().length > 0;
+  const filteredSections = useMemo(() => {
+    if (!isSearching) return sections.map((s,i)=>({...s,originalIdx:i,visibleCards:s.cards.map((_,ci)=>ci)}));
+    const q = searchQuery.toLowerCase();
+    return sections.map((section,si)=>{
+      const vc = section.cards.map((_,ci)=>ci).filter(ci=>{const it=allSearchableItems.find(x=>x.sectionIdx===si&&x.cardIdx===ci);return it&&it.text.includes(q);});
+      return {...section,originalIdx:si,visibleCards:vc};
+    }).filter(s=>s.visibleCards.length>0);
+  }, [searchQuery, isSearching]);
+
+  const toggleTip = id => setExpandedTip(p => p===id?null:id);
+  const toggleQuiz = id => setRevealedQuiz(p => ({...p,[id]:!p[id]}));
+  const toggleTerm = id => setExpandedTerms(p => ({...p,[id]:!p[id]}));
+  const toggleStar = id => setStarred(p => ({...p,[id]:!p[id]}));
+  const toggleComplete = i => setCompletedDays(p => ({...p,[i]:!p[i]}));
+
+  const setField = (cardId, key, val) => setFillValues(p => ({...p,[`${cardId}_${key}`]:val}));
+  const getField = (cardId, key) => fillValues[`${cardId}_${key}`] || "";
+
+  const copyText = (text, id) => {
+    try { const ta=document.createElement("textarea");ta.value=text;ta.style.cssText="position:fixed;left:-9999px;top:-9999px;opacity:0";document.body.appendChild(ta);ta.focus();ta.select();document.execCommand("copy");document.body.removeChild(ta);setCopiedId(id);setTimeout(()=>setCopiedId(null),2000); } catch(e){}
+  };
+
+  const getTab = cardId => activeTab[cardId]||0;
+  const completedCount = Object.values(completedDays).filter(Boolean).length;
+  const currentSection = sections[activeDay];
+
+  const renderCard = (card) => {
+    const cardId = card.id;
+    const isStarred = starred[cardId];
+    const starBtn = <span onClick={e=>{e.stopPropagation();toggleStar(cardId)}} style={{cursor:"pointer",fontSize:16,opacity:isStarred?1:0.3,transition:"all 0.2s",position:"absolute",top:20,right:20}} title={isStarred?"Unstar":"Star this card"}>{isStarred?"⭐":"☆"}</span>;
+
+    if (card.type === "golden-rule") return (
+      <div className="card golden-rule-card" key={cardId} style={{position:"relative"}}>{starBtn}<div className="golden-rule-icon">💎</div><div className="card-title">{card.title}</div><div className="card-text">{card.content}</div></div>
+    );
+
+    if (card.type === "fillable") {
+      const allFilled = card.fields.every(f => getField(cardId, f.key).trim());
+      const output = allFilled ? card.fields.reduce((str,f) => str.replace(`{${f.key}}`, getField(cardId,f.key)), card.outputTemplate) : "";
+      return (
+        <div className="card fillable-card" key={cardId} style={{position:"relative"}}>
+          {starBtn}
+          <div className="card-title">{card.title}</div>
+          {card.exampleNote && <div className="fill-example-note">{card.exampleNote}</div>}
+          <div className="fill-fields">
+            {card.fields.map(f => (
+              <div className="fill-field" key={f.key}>
+                <label className="fill-label">{f.label}</label>
+                <input className="fill-input" type="text" placeholder={f.placeholder} value={getField(cardId,f.key)} onChange={e=>setField(cardId,f.key,e.target.value)} />
+              </div>
+            ))}
+          </div>
+          {allFilled && (
+            <div className="fill-output">
+              <div className="fill-output-text">{output}</div>
+              <button className="copy-btn" onClick={()=>copyText(output,cardId)} style={{marginTop:12}}>{copiedId===cardId?"✓ Copied":"📋 Copy"}</button>
+            </div>
+          )}
+          {!allFilled && <div className="fill-hint">Fill in all fields above to unlock copy</div>}
+        </div>
+      );
+    }
+
+    if (card.type === "prompt-card") {
+      return (
+        <div className={`card prompt-gen-card ${card.important?"prompt-important":""}`} key={cardId} style={{position:"relative"}}>
+          {starBtn}
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+            <span style={{fontSize:22}}>{card.emoji}</span>
+            <div className="card-title" style={{marginBottom:0}}>{card.title}</div>
+          </div>
+          <div className="prompt-text">{card.prompt}</div>
+          <button className="copy-btn" onClick={()=>copyText(card.prompt,cardId)} style={{marginTop:14}}>{copiedId===cardId?"✓ Copied":"📋 Copy Prompt"}</button>
+        </div>
+      );
+    }
+
+    if (card.type === "fillable-prompt") {
+      const allFilled = card.fields.every(f => getField(cardId, f.key).trim());
+      const output = allFilled ? card.fields.reduce((str,f) => str.replace(`{${f.key}}`, getField(cardId,f.key)), card.promptTemplate) : "";
+      return (
+        <div className={`card prompt-gen-card ${card.important?"prompt-important":""}`} key={cardId} style={{position:"relative"}}>
+          {starBtn}
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:12}}>
+            <span style={{fontSize:22}}>{card.emoji}</span>
+            <div className="card-title" style={{marginBottom:0}}>{card.title}</div>
+          </div>
+          <div className="fill-fields">
+            {card.fields.map(f => (
+              <div className="fill-field" key={f.key}>
+                <label className="fill-label">{f.label}</label>
+                <input className="fill-input" type="text" placeholder={f.placeholder} value={getField(cardId,f.key)} onChange={e=>setField(cardId,f.key,e.target.value)} />
+              </div>
+            ))}
+          </div>
+          {allFilled && (
+            <div className="fill-output">
+              <div className="prompt-text">{output}</div>
+              <button className="copy-btn" onClick={()=>copyText(output,cardId)} style={{marginTop:12}}>{copiedId===cardId?"✓ Copied":"📋 Copy Prompt"}</button>
+            </div>
+          )}
+          {!allFilled && <div className="fill-hint">Fill in all fields to generate your ready-to-copy prompt</div>}
+        </div>
+      );
+    }
+
+    if (card.type === "link-card") {
+      return (
+        <div className="card link-card-el" key={cardId} style={{position:"relative"}}>
+          {starBtn}
+          <div className="card-title">{card.title}</div>
+          <div className="card-text" style={{marginBottom:14}}>{card.description}</div>
+          <a href={card.url} target="_blank" rel="noopener noreferrer" className="link-btn">{card.linkText}</a>
+        </div>
+      );
+    }
+
+    if (card.type === "formula") {
+      return (
+        <div className="card formula-card" key={cardId} style={{position:"relative"}}>
+          {starBtn}
+          <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:14}}>
+            <div className="card-title" style={{marginBottom:0,flex:1}}>{card.title}</div>
+            {card.copyable && <button onClick={()=>copyText(card.steps.map(s=>s.text).join("
+"),cardId)} className="copy-btn">{copiedId===cardId?"✓ Copied":"📋 Copy"}</button>}
+          </div>
+          <div className="formula-steps">{card.steps.map((step,i)=>(<div className="formula-step" key={i}><span className="formula-label">{step.label}</span><span className="formula-text">{step.text}</span></div>))}</div>
+        </div>
+      );
+    }
+
+    if (card.type === "do-dont") return (
+      <div className="card dodont-card" key={cardId} style={{position:"relative"}}>
+        {starBtn}<div className="card-title">{card.title}</div>
+        <div className="dodont-grid">
+          <div className="dodont-col do-col"><div className="dodont-label do-label">{card.dosLabel||"DO THIS"}</div>{card.dos.map((item,i)=>(<div className="dodont-item" key={i}><span className="dodont-icon do-icon">✓</span><span>{item}</span></div>))}</div>
+          <div className="dodont-col dont-col"><div className="dodont-label dont-label">{card.dontsLabel||"NOT THIS"}</div>{card.donts.map((item,i)=>(<div className="dodont-item" key={i}><span className="dodont-icon dont-icon">✗</span><span>{item}</span></div>))}</div>
+        </div>
+      </div>
+    );
+
+    if (card.type === "categories") return (
+      <div className="card categories-card" key={cardId} style={{position:"relative"}}>
+        {starBtn}<div className="card-title">{card.title}</div>
+        <div className="cat-grid">{card.items.map((item,i)=>(<div className="cat-item" key={i}><div className="cat-emoji">{item.emoji}</div><div className="cat-name">{item.name}</div><div className="cat-desc">{item.desc}</div></div>))}</div>
+      </div>
+    );
+
+    if (card.type === "tabs") {
+      const ct = getTab(cardId); const tab = card.tabs[ct];
+      return (
+        <div className="card tabs-card" key={cardId} style={{position:"relative"}}>
+          {starBtn}<div className="card-title">{card.title}</div>
+          <div className="tabs-row">{card.tabs.map((t,i)=>(<button key={i} className={`tab-btn ${ct===i?"tab-active":""}`} onClick={()=>setActiveTab(p=>({...p,[cardId]:i}))}><span className="tab-emoji">{t.emoji}</span><span className="tab-label">{t.label}</span></button>))}</div>
+          <div className="tab-content"><div className="tab-content-emoji">{tab.emoji}</div><div className="tab-content-title">{tab.label}</div><div className="tab-content-text">{tab.content}</div></div>
+        </div>
+      );
+    }
+
+    if (card.type === "tip-block") {
+      const isExp = expandedTip===cardId;
+      return (
+        <div className="card tip-card" key={cardId} onClick={()=>toggleTip(cardId)} style={{cursor:"pointer",position:"relative"}}>
+          <div className="tip-header"><div className="tip-icon">💡</div><div className="card-title" style={{marginBottom:0,color:"#faf6f1"}}>{card.title}</div><div className="tip-toggle">{isExp?"▲":"▼"}</div></div>
+          {isExp && <div className="tip-content">{card.content}</div>}
+          {!isExp && <div className="tip-peek">Click to reveal this tip</div>}
+        </div>
+      );
+    }
+
+    if (card.type === "numbers") return (
+      <div className="card numbers-card" key={cardId} style={{position:"relative"}}>
+        {starBtn}<div className="card-title">{card.title}</div>
+        <div className="numbers-grid">{card.stats.map((stat,i)=>(<div className="number-item" key={i}><div className="number-value">{stat.value}</div><div className="number-label">{stat.label}</div><div className="number-detail">{stat.detail}</div></div>))}</div>
+      </div>
+    );
+
+    if (card.type === "quiz") {
+      const isR = revealedQuiz[cardId];
+      return (
+        <div className="card quiz-card" key={cardId} onClick={()=>toggleQuiz(cardId)} style={{cursor:"pointer"}}>
+          <div className="quiz-header"><span className="quiz-badge">QUICK CHECK</span></div>
+          <div className="quiz-question">{card.question}</div>
+          {isR ? <div className="quiz-answer"><span className="quiz-answer-label">ANSWER:</span> {card.answer}</div> : <div className="quiz-reveal">Click to reveal answer</div>}
+        </div>
+      );
+    }
+
+    if (card.type === "glossary") return (
+      <div className="card glossary-card" key={cardId} style={{position:"relative"}}>
+        {starBtn}<div className="card-title">{card.title}</div>
+        <div className="glossary-list">{card.terms.map((t,i)=>{const tid=`${cardId}-${i}`;const isO=expandedTerms[tid];return(
+          <div key={i} className="glossary-item" onClick={()=>toggleTerm(tid)} style={{cursor:"pointer"}}><div className="glossary-term-row"><span className="glossary-term">{t.term}</span><span className="glossary-arrow">{isO?"▼":"▶"}</span></div>{isO&&<div className="glossary-def">{t.definition}</div>}</div>
+        );})}</div>
+      </div>
+    );
+    return null;
+  };
+
+  const starredCards = [];
+  sections.forEach(s=>{s.cards.forEach(c=>{if(starred[c.id])starredCards.push({card:c,sectionLabel:s.label});});});
+
+  return (
+    <div style={{fontFamily:"'DM Sans', sans-serif",background:"#FAFAF5",minHeight:"100vh",color:"#1A1A1A"}}>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Mono:wght@400;700&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box;}
+
+        .header-section{background:linear-gradient(180deg,#0f0a1a 0%,#1A1A1A 50%,#2a1845 100%);padding:48px 24px 24px;text-align:center;position:relative;overflow:hidden;}
+        .header-section::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 0%,rgba(107,33,255,0.12) 0%,transparent 70%);pointer-events:none;}
+        .artifact-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#FFD166;margin-bottom:16px;position:relative;}
+        .main-title{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(26px,5vw,40px);color:#FAFAF5;line-height:1.15;margin-bottom:4px;position:relative;}
+        .main-title-accent{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:clamp(26px,5vw,40px);color:#FFD166;line-height:1.15;display:block;}
+        .subtitle{font-size:clamp(13px,2vw,15px);color:rgba(250,250,245,0.5);margin-top:10px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.5;position:relative;}
+        .progress-wrapper{max-width:360px;margin:18px auto 0;position:relative;}
+        .progress-bar-bg{height:4px;background:rgba(250,250,245,0.08);border-radius:2px;overflow:hidden;}
+        .progress-bar-fill{height:100%;background:linear-gradient(90deg,#6B21FF,#FFD166);border-radius:2px;transition:width 0.4s ease;}
+        .progress-text{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(250,250,245,0.3);margin-top:6px;text-align:center;}
+
+        .day-nav-wrapper{position:sticky;top:0;z-index:100;background:#FAFAF5;border-bottom:1px solid rgba(26,26,26,0.08);box-shadow:0 1px 8px rgba(0,0,0,0.04);}
+        .day-nav{max-width:720px;margin:0 auto;padding:0 4px;display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;}
+        .day-nav::-webkit-scrollbar{display:none;}
+        .day-tab{display:flex;flex-direction:column;align-items:center;gap:2px;padding:11px 6px 9px;cursor:pointer;border-bottom:2.5px solid transparent;transition:all 0.2s;flex:1;min-width:68px;position:relative;border-radius:0;}
+        .day-tab:hover{background:rgba(107,33,255,0.03);}
+        .day-tab.day-tab-active{border-bottom-color:#6B21FF;background:rgba(107,33,255,0.03);}
+        .day-tab.day-tab-done{background:rgba(58,143,92,0.06);border-bottom-color:#3a8f5c;}
+        .day-tab.day-tab-done.day-tab-active{background:rgba(58,143,92,0.1);border-bottom-color:#3a8f5c;}
+        .day-tab-num{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:#b5afc0;transition:color 0.2s;}
+        .day-tab-active .day-tab-num{color:#6B21FF;}
+        .day-tab-done .day-tab-num{color:#3a8f5c;}
+        .day-tab-name{font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;color:#9b95a5;transition:color 0.2s;white-space:nowrap;}
+        .day-tab-active .day-tab-name{color:#1A1A1A;}
+        .day-tab-done .day-tab-name{color:#3a8f5c;}
+        .day-tab-check-icon{font-size:10px;position:absolute;top:3px;right:3px;}
+
+        .search-wrapper{max-width:660px;margin:18px auto 0;padding:0 24px;}
+        .search-box{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(26,26,26,0.1);border-radius:12px;padding:12px 16px;transition:border-color 0.2s;}
+        .search-box:focus-within{border-color:#6B21FF;}
+        .search-icon{font-size:15px;color:#9b95a5;}
+        .search-input{flex:1;border:none;outline:none;font-family:'DM Sans',sans-serif;font-size:14px;color:#1A1A1A;background:transparent;}
+        .search-input::placeholder{color:#b5afc0;font-style:italic;}
+        .search-clear{background:none;border:none;font-size:14px;color:#9b95a5;cursor:pointer;padding:2px 6px;border-radius:4px;}
+        .search-clear:hover{color:#6B21FF;}
+        .search-hint{max-width:660px;margin:6px auto 0;padding:0 28px;}
+        .search-hint-text{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.5px;color:#6B21FF;}
+
+        .starred-panel{max-width:660px;margin:14px auto 0;padding:0 24px;}
+        .starred-inner{background:rgba(107,33,255,0.04);border:1px dashed rgba(107,33,255,0.2);border-radius:12px;padding:14px 18px;}
+        .starred-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#6B21FF;font-weight:700;margin-bottom:8px;}
+        .starred-item{font-size:13px;color:#4a4555;padding:3px 0;display:flex;align-items:center;gap:8px;}
+        .starred-section-tag{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:#9b95a5;background:rgba(155,149,165,0.1);padding:2px 6px;border-radius:3px;}
+
+        .section-block{max-width:660px;margin:24px auto 0;padding:0 24px;}
+        .section-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:22px;}
+        .section-number{width:40px;height:40px;min-width:40px;border-radius:50%;background:rgba(107,33,255,0.1);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:#6B21FF;margin-top:2px;}
+        .section-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#9b95a5;margin-bottom:4px;}
+        .section-title{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(21px,3.8vw,26px);color:#1A1A1A;line-height:1.25;}
+        .section-title-accent{font-family:'Playfair Display',serif;font-style:italic;color:#6B21FF;}
+
+        .card{background:#fff;border-radius:16px;padding:24px 22px;margin-bottom:14px;border:1px solid rgba(26,26,26,0.06);}
+        .card-title{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;color:#1A1A1A;margin-bottom:12px;}
+        .card-text{font-size:14px;line-height:1.7;color:#5a5565;}
+        .golden-rule-card{border-left:3px solid #FF5C35;background:linear-gradient(135deg,#fff 0%,rgba(255,92,53,0.03) 100%);}
+        .golden-rule-icon{font-size:24px;margin-bottom:10px;}
+
+        .copy-btn{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.5px;font-weight:700;color:#fff;background:#6B21FF;border:none;padding:6px 14px;border-radius:6px;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+        .copy-btn:hover{background:#5a1ad6;transform:translateY(-1px);}
+
+        /* Fillable cards */
+        .fillable-card{border:1px solid rgba(107,33,255,0.12);background:linear-gradient(135deg,#fff 0%,rgba(107,33,255,0.02) 100%);}
+        .fill-fields{display:flex;flex-direction:column;gap:12px;}
+        .fill-field{display:flex;flex-direction:column;gap:4px;}
+        .fill-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;color:#6B21FF;}
+        .fill-input{font-family:'DM Sans',sans-serif;font-size:14px;color:#1A1A1A;border:1px solid rgba(26,26,26,0.12);border-radius:8px;padding:10px 14px;background:#FAFAF5;transition:border-color 0.2s;outline:none;}
+        .fill-input:focus{border-color:#6B21FF;background:#fff;}
+        .fill-input::placeholder{color:#b5afc0;font-style:italic;font-size:13px;}
+        .fill-output{margin-top:16px;padding:16px;background:#FAFAF5;border-radius:10px;border:1px solid rgba(107,33,255,0.1);}
+        .fill-output-text{font-size:14px;line-height:1.7;color:#1A1A1A;white-space:pre-wrap;}
+        .fill-hint{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.5px;color:#b5afc0;margin-top:12px;font-style:italic;}
+        .fill-example-note{font-size:13px;color:#7a7485;margin-bottom:14px;line-height:1.5;font-style:italic;}
+
+        /* Prompt cards */
+        .prompt-gen-card{border:1px solid rgba(26,26,26,0.06);}
+        .prompt-important{border:1px solid rgba(255,209,102,0.3);background:linear-gradient(135deg,#fff 0%,rgba(255,209,102,0.04) 100%);}
+        .prompt-text{font-size:13.5px;line-height:1.65;color:#5a5565;background:#FAFAF5;border-radius:10px;padding:16px;font-family:'DM Sans',sans-serif;}
+
+        /* Link card */
+        .link-card-el{border:1px solid rgba(107,33,255,0.1);}
+        .link-btn{display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;color:#6B21FF;text-decoration:none;padding:10px 20px;border:1px solid rgba(107,33,255,0.25);border-radius:10px;transition:all 0.2s;}
+        .link-btn:hover{background:rgba(107,33,255,0.05);border-color:#6B21FF;}
+
+        .formula-steps{display:flex;flex-direction:column;gap:10px;}
+        .formula-step{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:#FAFAF5;border-radius:10px;}
+        .formula-label{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:#6B21FF;min-width:28px;padding-top:1px;}
+        .formula-text{font-size:14px;line-height:1.5;color:#1A1A1A;}
+
+        .dodont-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+        .dodont-col{border-radius:12px;padding:16px 14px;}
+        .do-col{background:rgba(76,175,128,0.06);border:1px solid rgba(76,175,128,0.15);}
+        .dont-col{background:rgba(220,80,80,0.04);border:1px solid rgba(220,80,80,0.12);}
+        .dodont-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:12px;}
+        .do-label{color:#3a8f5c;}.dont-label{color:#c45050;}
+        .dodont-item{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.5;color:#4a4555;margin-bottom:8px;}
+        .dodont-item:last-child{margin-bottom:0;}
+        .dodont-icon{font-weight:700;font-size:12px;min-width:16px;padding-top:1px;}
+        .do-icon{color:#3a8f5c;}.dont-icon{color:#c45050;}
+
+        .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+        .cat-item{background:#FAFAF5;border-radius:12px;padding:18px 16px;}
+        .cat-emoji{font-size:22px;margin-bottom:8px;}
+        .cat-name{font-weight:700;font-size:13.5px;color:#1A1A1A;margin-bottom:4px;}
+        .cat-desc{font-size:12.5px;line-height:1.55;color:#7a7485;}
+
+        .tabs-row{display:flex;gap:6px;margin-bottom:16px;overflow-x:auto;}
+        .tab-btn{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:10px;border:1px solid rgba(26,26,26,0.08);background:#FAFAF5;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;color:#7a7485;cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+        .tab-btn:hover{border-color:rgba(107,33,255,0.3);color:#6B21FF;}
+        .tab-btn.tab-active{background:#6B21FF;color:#fff;border-color:#6B21FF;}
+        .tab-emoji{font-size:14px;}.tab-label{font-size:12px;}
+        .tab-content{background:#FAFAF5;border-radius:12px;padding:24px 20px;}
+        .tab-content-emoji{font-size:28px;margin-bottom:8px;}
+        .tab-content-title{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;color:#1A1A1A;margin-bottom:8px;}
+        .tab-content-text{font-size:14px;line-height:1.7;color:#5a5565;}
+
+        .tip-card{background:linear-gradient(135deg,#0f0a1a 0%,#1A1A1A 50%,#2a1845 100%);border:none;}
+        .tip-header{display:flex;align-items:center;gap:10px;}
+        .tip-icon{font-size:20px;}.tip-toggle{font-size:10px;color:#FFD166;}
+        .tip-content{font-size:14px;line-height:1.7;color:rgba(250,250,245,0.7);margin-top:16px;padding-top:16px;border-top:1px solid rgba(250,250,245,0.08);}
+        .tip-peek{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,209,102,0.6);margin-top:10px;}
+
+        .numbers-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
+        .number-item{background:#FAFAF5;border-radius:12px;padding:20px 14px;text-align:center;}
+        .number-value{font-family:'Syne',sans-serif;font-weight:700;font-size:28px;color:#FF5C35;margin-bottom:4px;}
+        .number-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;color:#1A1A1A;margin-bottom:6px;}
+        .number-detail{font-size:11.5px;line-height:1.5;color:#7a7485;}
+
+        .quiz-card{background:linear-gradient(135deg,#0f0a1a 0%,#1A1A1A 50%,#2a1845 100%);border:none;padding:24px;}
+        .quiz-header{margin-bottom:12px;}
+        .quiz-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;font-weight:700;color:#FFD166;background:rgba(255,209,102,0.12);padding:4px 10px;border-radius:4px;}
+        .quiz-question{font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:15px;color:#FAFAF5;line-height:1.4;margin-bottom:14px;}
+        .quiz-answer{font-size:14px;line-height:1.7;color:rgba(250,250,245,0.7);padding-top:14px;border-top:1px solid rgba(250,250,245,0.08);}
+        .quiz-answer-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;font-weight:700;color:#4caf80;margin-right:6px;}
+        .quiz-reveal{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:rgba(255,209,102,0.5);font-style:italic;}
+
+        .glossary-list{display:flex;flex-direction:column;gap:6px;}
+        .glossary-item{background:#FAFAF5;border-radius:10px;padding:14px 16px;transition:background 0.2s;}
+        .glossary-item:hover{background:#f0efe8;}
+        .glossary-term-row{display:flex;justify-content:space-between;align-items:center;}
+        .glossary-term{font-weight:700;font-size:14px;color:#1A1A1A;}
+        .glossary-arrow{font-size:10px;color:#6B21FF;}
+        .glossary-def{font-size:13.5px;line-height:1.65;color:#5a5565;margin-top:10px;padding-top:10px;border-top:1px dashed rgba(107,33,255,0.15);}
+
+        .day-actions{max-width:660px;margin:24px auto 0;padding:0 24px 48px;}
+        .day-actions-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;}
+        .day-nav-btn{font-family:'DM Sans',sans-serif;font-weight:600;font-size:13px;color:#6B21FF;background:none;border:1px solid rgba(107,33,255,0.2);padding:10px 18px;border-radius:10px;cursor:pointer;transition:all 0.2s;}
+        .day-nav-btn:hover{background:rgba(107,33,255,0.05);border-color:rgba(107,33,255,0.4);}
+        .day-nav-btn:disabled{opacity:0.25;cursor:default;pointer-events:none;}
+        .day-complete-btn{font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;color:#fff;background:#6B21FF;border:none;padding:11px 22px;border-radius:10px;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;}
+        .day-complete-btn:hover{background:#5a1ad6;transform:translateY(-1px);}
+        .day-complete-btn.is-completed{background:#3a8f5c;}
+        .day-complete-btn.is-completed:hover{background:#2d7a4a;}
+
+        .completion-card{max-width:660px;margin:36px auto 0;padding:0 24px 60px;}
+        .completion-inner{background:linear-gradient(135deg,#0f0a1a 0%,#1A1A1A 50%,#2a1845 100%);border-radius:20px;padding:40px 28px;text-align:center;position:relative;overflow:hidden;}
+        .completion-inner::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 50% 50%,rgba(107,33,255,0.08) 0%,transparent 70%);pointer-events:none;}
+        .completion-emoji{font-size:40px;margin-bottom:14px;position:relative;}
+        .completion-title{font-family:'Syne',sans-serif;font-weight:600;font-size:22px;color:#FAFAF5;margin-bottom:10px;position:relative;}
+        .completion-text{font-size:14px;line-height:1.7;color:rgba(250,250,245,0.6);max-width:400px;margin:0 auto;position:relative;}
+        .completion-checklist{text-align:left;max-width:320px;margin:18px auto 0;position:relative;}
+        .completion-check-item{font-size:13px;color:rgba(250,250,245,0.55);padding:3px 0;}
+        .completion-check-item span{color:#4caf80;margin-right:8px;}
+        .cta-button{display:inline-flex;align-items:center;gap:8px;background:#6B21FF;color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;padding:14px 32px;border-radius:50px;border:none;cursor:pointer;margin-top:24px;transition:all 0.25s ease;text-decoration:none;letter-spacing:0.3px;}
+        .cta-button:hover{background:#5a1ad6;transform:translateY(-2px);box-shadow:0 8px 24px rgba(107,33,255,0.3);}
+
+        .footer-section{background:linear-gradient(180deg,#1A1A1A 0%,#0f0a1a 100%);padding:40px 24px;text-align:center;}
+        .footer-brand{font-family:'Syne',sans-serif;font-weight:600;font-size:16px;color:#FAFAF5;margin-bottom:4px;letter-spacing:1px;}
+        .footer-tagline{font-size:12px;font-style:italic;color:rgba(250,250,245,0.35);margin-bottom:20px;}
+        .footer-cta{display:inline-flex;align-items:center;gap:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;color:#FFD166;text-decoration:none;padding:12px 28px;border:1px solid rgba(255,209,102,0.3);border-radius:50px;transition:all 0.2s;letter-spacing:0.3px;}
+        .footer-cta:hover{background:rgba(255,209,102,0.08);border-color:#FFD166;transform:translateY(-1px);}
+        .footer-divider{width:40px;height:1px;background:rgba(250,250,245,0.08);margin:20px auto;}
+        .footer-credit{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(250,250,245,0.2);}
+
+        @media(max-width:520px){
+          .header-section{padding:32px 20px 20px;}
+          .section-block{padding:0 16px;}
+          .dodont-grid{grid-template-columns:1fr;}
+          .cat-grid{grid-template-columns:1fr;}
+          .numbers-grid{grid-template-columns:1fr;}
+          .completion-inner{padding:28px 18px;}
+          .tabs-row{gap:4px;}.tab-btn{padding:8px 10px;font-size:11px;}
+          .search-wrapper{padding:0 16px;}
+          .starred-panel{padding:0 16px;}
+          .day-actions{padding:0 16px 40px;}
+          .day-actions-inner{flex-wrap:wrap;justify-content:center;}
+          .day-tab{padding:10px 4px 8px;min-width:56px;}
+          .day-tab-name{font-size:9px;}.day-tab-num{font-size:8px;}
+          .fill-input{font-size:13px;padding:9px 12px;}
+        }
+      `}</style>
+
+      <div className="header-section">
+        <div className="artifact-label">THE MVB LAB.</div>
+        <div className="main-title">7-Day Brand Sprint<span className="main-title-accent">Quick Reference</span></div>
+        <div className="subtitle">Every framework, formula, and prompt from the sprint. All in one place.</div>
+        <div className="progress-wrapper">
+          <div className="progress-bar-bg"><div className="progress-bar-fill" style={{width:`${(completedCount/7)*100}%`}}/></div>
+          <div className="progress-text">{completedCount} of 7 days complete</div>
+        </div>
+      </div>
+
+      <div className="day-nav-wrapper">
+        <div className="day-nav">
+          {sections.map((s,i)=>(
+            <div key={i} className={`day-tab ${activeDay===i&&!isSearching?"day-tab-active":""} ${completedDays[i]?"day-tab-done":""}`} onClick={()=>{setActiveDay(i);setSearchQuery("");}}>
+              {completedDays[i] && <span className="day-tab-check-icon">✓</span>}
+              <span className="day-tab-num">Day {i+1}</span>
+              <span className="day-tab-name">{s.shortTitle}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="search-wrapper">
+        <div className="search-box">
+          <span className="search-icon">🔍</span>
+          <input className="search-input" type="text" placeholder="Search across all days..." value={searchQuery} onChange={e=>setSearchQuery(e.target.value)}/>
+          {searchQuery&&<button className="search-clear" onClick={()=>setSearchQuery("")}>✕</button>}
+        </div>
+      </div>
+      {isSearching&&<div className="search-hint"><div className="search-hint-text">Showing results across all 7 days</div></div>}
+
+      {starredCards.length>0&&!isSearching&&(
+        <div className="starred-panel"><div className="starred-inner"><div className="starred-label">⭐ YOUR STARRED CARDS</div>
+          {starredCards.map((s,i)=>(<div className="starred-item" key={i}><span className="starred-section-tag">{s.sectionLabel}</span><span>{s.card.title}</span></div>))}
+        </div></div>
+      )}
+
+      {isSearching ? (
+        <>
+          {filteredSections.map(section=>(
+            <div className="section-block" key={section.originalIdx}>
+              <div className="section-header"><div className="section-number">{String(section.originalIdx+1).padStart(2,"0")}</div><div><div className="section-label">{section.label}</div><div className="section-title">{section.title}{" "}<span className="section-title-accent">{section.titleAccent}</span></div></div></div>
+              {section.visibleCards.map(ci=>renderCard(section.cards[ci]))}
+            </div>
+          ))}
+          {filteredSections.length===0&&(
+            <div style={{maxWidth:660,margin:"48px auto",padding:"0 24px",textAlign:"center"}}>
+              <div style={{fontSize:32,marginBottom:12}}>🔍</div>
+              <div style={{fontFamily:"'Syne',sans-serif",fontSize:20,fontWeight:600,color:"#1A1A1A",marginBottom:8}}>No results found</div>
+              <div style={{fontSize:14,color:"#7a7485"}}>Try a different term or <button onClick={()=>setSearchQuery("")} style={{color:"#6B21FF",background:"none",border:"none",cursor:"pointer",fontWeight:700,fontSize:14,fontFamily:"'DM Sans',sans-serif"}}>clear the search</button></div>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <div className="section-block">
+            <div className="section-header"><div className="section-number">{String(activeDay+1).padStart(2,"0")}</div><div><div className="section-label">{currentSection.label}</div><div className="section-title">{currentSection.title}{" "}<span className="section-title-accent">{currentSection.titleAccent}</span></div></div></div>
+            {currentSection.cards.map(card=>renderCard(card))}
+          </div>
+          <div className="day-actions"><div className="day-actions-inner">
+            <button className="day-nav-btn" disabled={activeDay===0} onClick={()=>setActiveDay(p=>p-1)}>← Previous</button>
+            <button className={`day-complete-btn ${completedDays[activeDay]?"is-completed":""}`} onClick={()=>toggleComplete(activeDay)}>{completedDays[activeDay]?"✓ Completed":"Mark Complete"}</button>
+            <button className="day-nav-btn" disabled={activeDay===6} onClick={()=>setActiveDay(p=>p+1)}>Next →</button>
+          </div></div>
+          {completedCount===7&&(
+            <div className="completion-card"><div className="completion-inner">
+              <div className="completion-emoji">🚀</div>
+              <div className="completion-title">You Did It. Now Keep Going.</div>
+              <div className="completion-text">Your brand is built. Now let's get it seen. Show up 3 times a week. Stick to the rhythm.</div>
+              <div className="completion-checklist">
+                <div className="completion-check-item"><span>✅</span> Clear positioning</div>
+                <div className="completion-check-item"><span>✅</span> Your founder story</div>
+                <div className="completion-check-item"><span>✅</span> Visual identity</div>
+                <div className="completion-check-item"><span>✅</span> Optimized profile</div>
+                <div className="completion-check-item"><span>✅</span> First authority asset shipped</div>
+                <div className="completion-check-item"><span>✅</span> Sustainable weekly rhythm</div>
+              </div>
+              <a href="https://www.skool.com/mvb/about" className="cta-button" target="_blank" rel="noopener noreferrer">Join MVB Lab <span>→</span></a>
+            </div></div>
+          )}
+        </>
+      )}
+
+      <div className="footer-section">
+        <div className="footer-brand">THE MVB LAB.</div>
+        <div className="footer-tagline">Authenticity over polish. Clarity over noise.</div>
+        <a href="https://www.skool.com/mvb/about" className="footer-cta" target="_blank" rel="noopener noreferrer">Join Community →</a>
+        <div className="footer-divider"/>
+        <div className="footer-credit">THE MVB LAB. • skool.com/mvb</div>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(BrandSprintCheatSheet));
+</script>
+</body>
+</html>
