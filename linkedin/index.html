@@ -1,1 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LinkedIn: Clarity to Clients — a 6-lesson module from MVB Lab covering profile optimisation, content strategy, inbound lead generation, and AI-assisted content systems.">
+<meta property="og:title" content="LinkedIn Module — MVB Lab">
+<meta property="og:description" content="Six lessons from invisible to inbound. Free for MVB Lab members.">
+<meta name="theme-color" content="#1A1A1A">
+<title>LinkedIn Module — MVB Lab</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --violet:#6B21FF; --violet-light:#8B4FFF; --violet-dim:rgba(107,33,255,.12);
+    --gold:#FFD166; --coral:#FF5C35; --near-black:#1A1A1A;
+    --off-white:#FAFAF5; --mid:#F0EFE9; --muted:#888; --border:rgba(107,33,255,.2);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'DM Sans',sans-serif;background:var(--off-white);color:var(--near-black);min-height:100vh;}
 
+  /* HEADER */
+  .lesson-header{background:var(--near-black);padding:40px 32px 36px;position:relative;overflow:hidden;}
+  .lesson-header::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(107,33,255,.35) 0%,transparent 70%);pointer-events:none;}
+  .lesson-header::after{content:'';position:absolute;bottom:-40px;left:20%;width:200px;height:200px;background:radial-gradient(circle,rgba(255,209,102,.15) 0%,transparent 70%);pointer-events:none;}
+  .module-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(107,33,255,.25);border:1px solid rgba(107,33,255,.5);color:var(--gold);font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:4px;margin-bottom:18px;}
+  .module-tag .dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  h1{font-family:'Syne',sans-serif;font-size:clamp(24px,4vw,40px);font-weight:800;color:var(--off-white);line-height:1.1;margin-bottom:12px;}
+  h1 span{color:var(--gold);}
+  .lesson-sub{font-family:'Playfair Display',serif;font-style:italic;color:rgba(250,250,245,.5);font-size:16px;margin-bottom:28px;}
+  .meta-row{display:flex;gap:20px;flex-wrap:wrap;}
+  .meta-item{display:flex;align-items:center;gap:7px;color:rgba(250,250,245,.6);font-size:13px;}
+
+  /* TABS */
+  .lesson-tabs{background:var(--mid);border-bottom:1px solid rgba(0,0,0,.08);display:flex;overflow-x:auto;padding:0 16px;scrollbar-width:none;}
+  .lesson-tabs::-webkit-scrollbar{display:none;}
+  .lesson-tab{display:flex;align-items:center;gap:7px;padding:13px 16px;cursor:pointer;white-space:nowrap;font-family:'Syne',sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border-bottom:3px solid transparent;transition:all .2s;}
+  .lesson-tab:hover{color:var(--near-black);}
+  .lesson-tab.active{color:var(--violet);border-bottom-color:var(--violet);}
+  .lesson-tab.done{color:var(--near-black);border-bottom-color:var(--gold);}
+  .tab-num{width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;background:rgba(0,0,0,.1);transition:all .2s;flex-shrink:0;}
+  .lesson-tab.active .tab-num{background:var(--violet);color:white;}
+  .lesson-tab.done .tab-num{background:var(--gold);color:var(--near-black);}
+  .pbadge{font-size:9px;font-weight:700;letter-spacing:.05em;background:linear-gradient(135deg,var(--violet),#9B5FFF);color:white;padding:2px 7px;border-radius:10px;text-transform:uppercase;}
+  .pbadge.unlocked{background:linear-gradient(135deg,#16a34a,#22c55e);}
+
+  /* BODY */
+  .lesson-body{max-width:760px;margin:0 auto;padding:44px 32px 80px;}
+  .lesson-page{display:none;animation:fadeIn .3s ease;}
+  .lesson-page.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  /* TYPOGRAPHY */
+  .slabel{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--violet);margin-bottom:8px;}
+  h2{font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:var(--near-black);margin-bottom:14px;line-height:1.2;}
+  h3{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--near-black);margin-bottom:8px;}
+  p{font-size:15px;line-height:1.75;color:#333;margin-bottom:14px;}
+
+  /* COMPONENTS */
+  .intro-card{background:var(--near-black);border-radius:12px;padding:28px;margin-bottom:28px;position:relative;overflow:hidden;}
+  .intro-card::before{content:'';position:absolute;top:-30px;right:-30px;width:140px;height:140px;background:radial-gradient(circle,rgba(107,33,255,.3) 0%,transparent 70%);}
+  .intro-card p{color:rgba(250,250,245,.85);font-size:16px;line-height:1.7;position:relative;}
+  .intro-card strong{color:var(--gold);}
+
+  .hbox{border-left:4px solid var(--violet);background:var(--violet-dim);padding:18px 22px;border-radius:0 8px 8px 0;margin:22px 0;}
+  .hbox p{margin:0;font-size:14px;}
+  .hbox strong{color:var(--violet);}
+
+  .gbox{border-left:4px solid var(--gold);background:rgba(255,209,102,.1);padding:18px 22px;border-radius:0 8px 8px 0;margin:22px 0;}
+  .gbox .glabel{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#B8860B;margin-bottom:7px;}
+  .gbox p{margin:0;font-size:14px;}
+
+  .formula{background:var(--near-black);color:var(--off-white);border-radius:10px;padding:24px 28px;margin:24px 0;text-align:center;}
+  .formula .flabel{font-family:'Syne',sans-serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+  .fparts{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:12px;}
+  .fp{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px 16px;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--off-white);}
+  .fp.hl{background:rgba(107,33,255,.4);border-color:var(--violet);color:var(--gold);}
+  .fop{color:var(--muted);font-size:18px;font-weight:300;}
+  .divider{height:1px;background:rgba(0,0,0,.07);margin:28px 0;}
+
+  /* PROFILE ACCORDION */
+  .profile-sections{display:flex;flex-direction:column;gap:12px;margin:22px 0;}
+  .pc{background:white;border:1px solid rgba(0,0,0,.08);border-radius:10px;overflow:hidden;transition:box-shadow .2s;}
+  .pc:hover{box-shadow:0 4px 18px rgba(107,33,255,.1);}
+  .pc-hd{display:flex;align-items:center;gap:13px;padding:15px 20px;cursor:pointer;user-select:none;}
+  .pc-icon{width:33px;height:33px;background:var(--violet-dim);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+  .pc-meta{flex:1;}
+  .pc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;color:var(--near-black);margin-bottom:2px;}
+  .pc-sub{font-size:11px;color:var(--muted);}
+  .pc-chev{font-size:15px;color:var(--muted);transition:transform .2s;}
+  .pc.open .pc-chev{transform:rotate(180deg);}
+  .pc-body{display:none;padding:0 20px 18px;border-top:1px solid rgba(0,0,0,.06);}
+  .pc.open .pc-body{display:block;}
+  .pc-body p{font-size:14px;margin-top:12px;margin-bottom:10px;}
+
+  .bagrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;}
+  @media(max-width:480px){.bagrid{grid-template-columns:1fr;}}
+  .bac{border-radius:8px;padding:13px;}
+  .bac.before{background:#fff5f5;border:1px solid rgba(255,92,53,.2);}
+  .bac.after{background:#f0fdf4;border:1px solid rgba(22,163,74,.2);}
+  .balabel{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;}
+  .bac.before .balabel{color:var(--coral);}
+  .bac.after .balabel{color:#16a34a;}
+  .bac p{margin:0;font-size:13px;color:#444;}
+
+  /* BUILDER */
+  .builder-wrap{background:white;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:22px;margin:22px 0;}
+  .ff{margin-bottom:14px;}
+  .ff label{display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--violet);margin-bottom:5px;}
+  .ff input,.ff textarea{width:100%;background:white;border:1.5px solid var(--border);border-radius:6px;padding:10px 13px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--near-black);outline:none;transition:border-color .2s;resize:vertical;}
+  .ff input:focus,.ff textarea:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(107,33,255,.08);}
+  .bout{background:var(--near-black);color:var(--gold);font-family:'Syne',sans-serif;font-weight:700;font-size:15px;border-radius:8px;padding:18px;margin-top:16px;min-height:56px;line-height:1.4;}
+  .bout .ph{color:var(--muted);font-weight:400;font-size:14px;}
+
+  /* PROMPT BOX */
+  .prompt-box{background:#1e1e2e;border-radius:10px;padding:22px;margin:16px 0;position:relative;}
+  .prompt-box .plabel{font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+  .prompt-box pre{font-family:'Courier New',monospace;font-size:12.5px;color:#c9d1d9;white-space:pre-wrap;word-break:break-word;line-height:1.7;margin:0;}
+  .prompt-box pre em{color:#79c0ff;font-style:normal;}
+  .cbtn{position:absolute;top:14px;right:14px;background:rgba(255,209,102,.15);border:1px solid rgba(255,209,102,.3);color:var(--gold);font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:4px;cursor:pointer;transition:all .2s;}
+  .cbtn:hover{background:rgba(255,209,102,.25);}
+
+  /* CHECKLIST */
+  .checklist{list-style:none;margin:18px 0;}
+  .checklist li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,.05);font-size:14px;color:#333;line-height:1.5;cursor:pointer;}
+  .checklist li:last-child{border-bottom:none;}
+  .chkbox{width:20px;height:20px;border:2px solid var(--border);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all .2s;font-size:11px;}
+  .checklist li.checked .chkbox{background:var(--violet);border-color:var(--violet);color:white;}
+  .checklist li.checked span{text-decoration:line-through;color:var(--muted);}
+
+  /* POST GRID */
+  .post-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin:22px 0;}
+  @media(max-width:520px){.post-grid{grid-template-columns:1fr;}}
+  .pgc{background:white;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:18px;transition:box-shadow .2s;}
+  .pgc:hover{box-shadow:0 4px 16px rgba(107,33,255,.1);}
+  .pgc .pgi{font-size:22px;margin-bottom:10px;}
+  .pgc .pgt{font-family:'Syne',sans-serif;font-weight:700;font-size:13px;margin-bottom:6px;}
+  .pgc .pgd{font-size:13px;color:#555;line-height:1.6;margin:0;}
+
+  /* COMPLETION BANNER */
+  .comp-banner{background:linear-gradient(135deg,var(--violet),#9B5FFF);border-radius:12px;padding:28px;text-align:center;color:white;margin-top:28px;}
+  .comp-banner h3{color:var(--gold);font-family:'Syne',sans-serif;font-size:20px;margin-bottom:8px;}
+  .comp-banner p{color:rgba(255,255,255,.85);margin-bottom:18px;font-size:14px;}
+
+  /* LESSON NAV */
+  .lesson-nav{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding-top:28px;border-top:1px solid rgba(0,0,0,.08);}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:6px;font-family:'Syne',sans-serif;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;}
+  .btn-primary{background:var(--violet);color:white;}
+  .btn-primary:hover{background:var(--violet-light);transform:translateY(-1px);box-shadow:0 4px 16px rgba(107,33,255,.3);}
+  .btn-ghost{background:transparent;color:var(--near-black);border:1.5px solid rgba(0,0,0,.15);}
+  .btn-ghost:hover{border-color:var(--violet);color:var(--violet);}
+  .btn:disabled{opacity:.3;cursor:not-allowed;transform:none!important;box-shadow:none!important;}
+  .btn-gold{background:var(--gold);color:var(--near-black);}
+  .btn-gold:hover{background:#ffc933;}
+
+  /* PREMIUM GATE */
+  .gate-wrap{position:relative;border-radius:12px;overflow:hidden;}
+  .gate-blur{filter:blur(5px);pointer-events:none;user-select:none;}
+  .gate-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(250,250,245,.2) 0%,rgba(250,250,245,.93) 28%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;text-align:center;z-index:10;border-radius:12px;}
+  .gate-lock{font-size:40px;margin-bottom:16px;}
+  .gate-title{font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--near-black);margin-bottom:8px;}
+  .gate-sub{font-size:14px;color:#555;margin-bottom:22px;max-width:360px;line-height:1.6;}
+  .gate-div{width:40px;height:2px;background:var(--violet);border-radius:2px;margin:0 auto 22px;}
+  .pw-row{display:flex;gap:10px;width:100%;max-width:380px;margin-bottom:10px;}
+  .pw-input{flex:1;border:1.5px solid var(--border);border-radius:6px;padding:11px 14px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--near-black);outline:none;transition:border-color .2s;background:white;}
+  .pw-input:focus{border-color:var(--violet);box-shadow:0 0 0 3px rgba(107,33,255,.08);}
+  .pw-err{font-size:12px;color:var(--coral);margin-top:4px;min-height:16px;}
+  .skool-link{font-size:12px;color:var(--muted);}
+  .skool-link a{color:var(--violet);text-decoration:underline;}
+
+  /* LESSON 5/6 EXTRAS */
+  .sblock{background:white;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:20px;margin:14px 0;}
+  .sblock .sbnum{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--violet-dim);margin-bottom:4px;}
+  .sblock .sbtitle{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--near-black);margin-bottom:7px;}
+  .sblock p{font-size:14px;margin:0;color:#444;}
+  .wrow{display:grid;grid-template-columns:78px 1fr;gap:0;margin:7px 0;border-radius:8px;overflow:hidden;}
+  .wlabel{background:var(--violet);color:white;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;padding:8px;}
+  .wcontent{background:white;border:1px solid rgba(107,33,255,.15);border-left:none;padding:10px 14px;font-size:13px;color:#333;line-height:1.6;}
+  .hook-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0;}
+  @media(max-width:480px){.hook-grid{grid-template-columns:1fr;}}
+  .hook-item{background:white;border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:13px;font-size:13px;color:#333;line-height:1.5;}
+
+  /* FOOTER */
+  .lesson-footer{text-align:center;padding:20px 32px;border-top:1px solid rgba(0,0,0,.08);font-size:12px;color:var(--muted);font-style:italic;}
+  .lesson-footer strong{font-style:normal;color:var(--near-black);}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="lesson-header">
+  <div class="module-tag"><span class="dot"></span> LinkedIn Module · MVB Lab</div>
+  <h1>LinkedIn: <span>Clarity to Clients</span></h1>
+  <p class="lesson-sub">Six lessons. From invisible to inbound.</p>
+  <div class="meta-row">
+    <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~20–60 min per lesson</div>
+    <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg> 6 lessons</div>
+    <div class="meta-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg> Lessons 4–6 Premium</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="lesson-tabs">
+  <div class="lesson-tab active" id="tab-0" onclick="goTo(0)"><span class="tab-num">1</span> Profile</div>
+  <div class="lesson-tab" id="tab-1" onclick="goTo(1)"><span class="tab-num">2</span> Profile: AI</div>
+  <div class="lesson-tab" id="tab-2" onclick="goTo(2)"><span class="tab-num">3</span> Content</div>
+  <div class="lesson-tab" id="tab-3" onclick="goTo(3)"><span class="tab-num">4</span> Inbound <span class="pbadge" id="badge-3">Premium</span></div>
+  <div class="lesson-tab" id="tab-4" onclick="goTo(4)"><span class="tab-num">5</span> AI System <span class="pbadge" id="badge-4">Premium</span></div>
+  <div class="lesson-tab" id="tab-5" onclick="goTo(5)"><span class="tab-num">6</span> 30-Day Sprint <span class="pbadge" id="badge-5">Premium</span></div>
+</div>
+
+<div class="lesson-body">
+
+<!-- ════════════════════════════════════════
+     LESSON 1 — PROFILE: WHY + 5 SECTIONS
+════════════════════════════════════════ -->
+<div class="lesson-page active" id="lesson-0">
+
+  <div class="intro-card">
+    <p>Most LinkedIn profiles are written for the person who owns them. Job titles, past companies, achievements. They read like a CV.<br><br>
+    <strong>Your profile isn't for you. It's for the person deciding whether to hire you.</strong><br><br>
+    They land on your page and ask one question in 7 seconds: <em>Is this person for me?</em></p>
+  </div>
+
+  <div class="slabel">The Shift</div>
+  <h2>From resume to magnet</h2>
+  <p>A converting profile does one job: it makes the right person feel like they're in exactly the right place.</p>
+
+  <div class="formula">
+    <div class="flabel">The Profile Conversion Formula</div>
+    <div class="fparts">
+      <div class="fp">Clarity on who</div><div class="fop">+</div>
+      <div class="fp">Specific outcome</div><div class="fop">+</div>
+      <div class="fp hl">Proof they can trust you</div><div class="fop">=</div>
+      <div class="fp">Inbound leads</div>
+    </div>
+  </div>
+
+  <div class="slabel">Profile Anatomy</div>
+  <h2>The 5 sections that convert</h2>
+  <p>LinkedIn has dozens of profile sections. These five are the only ones that matter for inbound. Click each to expand.</p>
+
+  <div class="profile-sections">
+    <div class="pc" id="pc1">
+      <div class="pc-hd" onclick="toggleCard('pc1')">
+        <div class="pc-icon">🖼️</div>
+        <div class="pc-meta"><div class="pc-title">Banner Image</div><div class="pc-sub">Prime real estate — most people leave it blue</div></div>
+        <div class="pc-chev">▾</div>
+      </div>
+      <div class="pc-body">
+        <p>One clear statement of who you help and what they get. No logos. No stock photos. Text on a solid or simple background beats a busy design every time.</p>
+        <div class="bagrid">
+          <div class="bac before"><div class="balabel">❌ Weak</div><p>Generic blue background, landscape photo, or a logo with no context.</p></div>
+          <div class="bac after"><div class="balabel">✅ Strong</div><p>"I help coaches get their first 3 paying LinkedIn clients in 60 days." White text on dark bg.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="pc" id="pc2">
+      <div class="pc-hd" onclick="toggleCard('pc2')">
+        <div class="pc-icon">✏️</div>
+        <div class="pc-meta"><div class="pc-title">Headline</div><div class="pc-sub">Most visible text on LinkedIn — appears everywhere</div></div>
+        <div class="pc-chev">▾</div>
+      </div>
+      <div class="pc-body">
+        <p><strong>Formula:</strong> I help [specific person] achieve [specific outcome] using [method]. 220 characters max. Lead with who you help. End with what changes for them.</p>
+        <div class="bagrid">
+          <div class="bac before"><div class="balabel">❌ Job title</div><p>"Business Coach | Speaker | Consultant | Helping you reach your potential"</p></div>
+          <div class="bac after"><div class="balabel">✅ Outcome-led</div><p>"I help independent consultants land 3 high-ticket clients a month through LinkedIn — without paid ads"</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="pc" id="pc3">
+      <div class="pc-hd" onclick="toggleCard('pc3')">
+        <div class="pc-icon">📝</div>
+        <div class="pc-meta"><div class="pc-title">About Section</div><div class="pc-sub">Where trust is built</div></div>
+        <div class="pc-chev">▾</div>
+      </div>
+      <div class="pc-body">
+        <p>5-paragraph structure: (1) Who you help + problem, (2) Cost of leaving it unsolved, (3) Your approach, (4) Proof, (5) The exact next step.</p>
+        <div class="gbox" style="margin-top:12px;"><div class="glabel">💡 Key insight</div><p>Start with the reader, not yourself. "If you're a consultant who..." outperforms "I'm a business coach who..." every time.</p></div>
+      </div>
+    </div>
+    <div class="pc" id="pc4">
+      <div class="pc-hd" onclick="toggleCard('pc4')">
+        <div class="pc-icon">⭐</div>
+        <div class="pc-meta"><div class="pc-title">Featured Section</div><div class="pc-sub">Your one conversion point</div></div>
+        <div class="pc-chev">▾</div>
+      </div>
+      <div class="pc-body">
+        <p>Feature one thing: your best-performing post, a lead magnet, a 60-sec video intro, or a case study. Link to something specific that offers immediate value — not your homepage.</p>
+      </div>
+    </div>
+    <div class="pc" id="pc5">
+      <div class="pc-hd" onclick="toggleCard('pc5')">
+        <div class="pc-icon">🏆</div>
+        <div class="pc-meta"><div class="pc-title">Recommendations</div><div class="pc-sub">Social proof layer</div></div>
+        <div class="pc-chev">▾</div>
+      </div>
+      <div class="pc-body">
+        <p>2–3 strong outcome-specific ones beat 10 generic ones. Ask clients to mention one concrete result. Give them a prompt if needed: "Could you mention [the result] and how we got there?"</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="slabel">Lesson 1 Checklist</div>
+  <h2>Before you move on</h2>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Read all 5 profile sections above</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Identify which sections on your profile need the most work</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Note your current headline — you'll rewrite it in Lesson 2</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Check your Featured section — is it pointing to something specific?</span></li>
+  </ul>
+
+  <div class="lesson-nav">
+    <button class="btn btn-ghost" disabled>← Start</button>
+    <button class="btn btn-primary" onclick="goTo(1)">Lesson 2: Profile AI →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LESSON 2 — PROFILE: BUILDER + AI PROMPTS
+════════════════════════════════════════ -->
+<div class="lesson-page" id="lesson-1">
+
+  <div class="intro-card">
+    <p>You know what goes in each section. Now it's time to actually write it.<br><br>
+    <strong>Use the headline builder to draft your positioning in real time,</strong> then use the AI prompts to write your full About section and get a recommendation DM you can send today.</p>
+  </div>
+
+  <div class="slabel">Interactive Builder</div>
+  <h2>Build your headline now</h2>
+  <p>Fill in the fields below. Your headline drafts in real time as you type.</p>
+
+  <div class="builder-wrap">
+    <div class="ff"><label>Who you help (be specific)</label><input type="text" id="who" placeholder="e.g. independent coaches and consultants" oninput="updateHeadline()"></div>
+    <div class="ff"><label>The outcome they get</label><input type="text" id="outcome" placeholder="e.g. land 3 high-ticket clients a month" oninput="updateHeadline()"></div>
+    <div class="ff"><label>How / without what (optional)</label><input type="text" id="method" placeholder="e.g. using LinkedIn — without paid ads" oninput="updateHeadline()"></div>
+    <div class="bout" id="headline-output"><span class="ph">Your headline will appear here as you type...</span></div>
+  </div>
+
+  <div class="ff" style="margin-top:8px;"><label>Your About Section opening line</label><textarea id="about-open" rows="3" placeholder="If you're a coach or consultant who knows exactly what you do but can't explain it in a way that attracts clients — you're in the right place."></textarea></div>
+
+  <div class="divider"></div>
+  <div class="slabel">Write Your Profile with AI</div>
+  <h2>Three prompts. Full profile written.</h2>
+  <div class="gbox"><div class="glabel">💡 How to use</div><p>Fill in the [brackets] with your real info before running. Generic input = generic output. You edit the AI draft — you don't publish it as-is.</p></div>
+
+  <h3 style="margin-top:22px;">Prompt 1 — Headline Generator</h3>
+  <p style="font-size:13px;color:#555;margin-bottom:4px;">5 headline options in your voice.</p>
+  <div class="prompt-box" id="p1a">
+    <div class="plabel">🤖 AI PROMPT</div>
+    <button class="cbtn" onclick="copyP('p1a')">Copy</button>
+    <pre>Write 5 LinkedIn headline options for me.
+
+I help: <em>[describe your specific client]</em>
+They get: <em>[the main outcome or transformation]</em>
+My approach/method: <em>[what makes you different]</em>
+Without: <em>[the thing they want to avoid]</em>
+
+Requirements:
+- Max 220 characters each
+- Lead with who I help, not my job title
+- End with the outcome or result
+- No corporate jargon or hype words
+- Direct, warm, peer-level tone</pre>
+  </div>
+
+  <h3 style="margin-top:22px;">Prompt 2 — About Section</h3>
+  <p style="font-size:13px;color:#555;margin-bottom:4px;">5-paragraph structure, written in your voice.</p>
+  <div class="prompt-box" id="p1b">
+    <div class="plabel">🤖 AI PROMPT</div>
+    <button class="cbtn" onclick="copyP('p1b')">Copy</button>
+    <pre>Write a LinkedIn About section using this structure:
+
+Para 1 — Who I help + the specific problem I solve
+Para 2 — Cost of leaving it unsolved
+Para 3 — My approach and what makes it different
+Para 4 — One piece of proof (result, credential, or client outcome)
+Para 5 — The exact next step
+
+My details:
+- I help: <em>[specific client]</em>
+- The problem: <em>[what they're struggling with]</em>
+- My approach: <em>[how you work]</em>
+- Proof: <em>[a real result or credential]</em>
+- CTA: <em>[what you want them to do next]</em>
+
+Tone: direct, warm, start with the reader not with me.
+Length: 150–200 words total. Short paragraphs. Easy to scan.</pre>
+  </div>
+
+  <h3 style="margin-top:22px;">Prompt 3 — Recommendation Request DM</h3>
+  <p style="font-size:13px;color:#555;margin-bottom:4px;">Ask a past client for a recommendation that actually converts.</p>
+  <div class="prompt-box" id="p1c">
+    <div class="plabel">🤖 AI PROMPT</div>
+    <button class="cbtn" onclick="copyP('p1c')">Copy</button>
+    <pre>Write a short, natural DM I can send to a past client asking for a LinkedIn recommendation.
+
+Context:
+- Client name: <em>[name]</em>
+- What we worked on: <em>[brief description]</em>
+- The result they got: <em>[specific outcome if possible]</em>
+
+Make it feel personal and easy to say yes to.
+Include a suggested prompt they can use as a starting point.
+The recommendation should mention: the outcome, what it was like to work with me, and who else might benefit.
+Keep the DM under 100 words.</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="slabel">Lesson 2 Checklist</div>
+  <h2>Before you move on</h2>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Draft your headline using the builder above</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Run Prompt 1 and pick your favourite headline</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Update your headline on LinkedIn now</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Run Prompt 2 and draft your About section</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Send at least one recommendation request DM</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Post your new headline in the community for feedback</span></li>
+  </ul>
+
+  <div class="lesson-nav">
+    <button class="btn btn-ghost" onclick="goTo(0)">← Lesson 1</button>
+    <button class="btn btn-primary" onclick="goTo(2)">Lesson 3: Content →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LESSON 3 — CONTENT THAT GETS FOUND
+════════════════════════════════════════ -->
+<div class="lesson-page" id="lesson-2">
+
+  <div class="intro-card">
+    <p>Posting more doesn't fix the problem. <strong>Posting the right types of content, in the right structure, signals LinkedIn's algorithm to show you to new people.</strong><br><br>
+    This lesson covers the 4 post types that drive visibility — and a simple weekly rhythm to make it sustainable.</p>
+  </div>
+
+  <div class="slabel">The Algorithm</div>
+  <h2>How LinkedIn decides who sees your posts</h2>
+  <p>LinkedIn's algorithm has one goal: keep people on the platform. It rewards content that generates dwell time and early engagement.</p>
+  <div class="hbox"><p><strong>The first 60 minutes matter most.</strong> If your post gets comments and reactions early, LinkedIn shows it to progressively larger audiences. If it doesn't, it disappears. Your best levers are: posting when your audience is online, and writing posts that prompt a response.</p></div>
+  <p>The algorithm also rewards <strong>consistency</strong> — not daily posting, but showing up regularly enough that LinkedIn marks you as an active creator.</p>
+
+  <div class="divider"></div>
+  <div class="slabel">Post Types</div>
+  <h2>The 4 posts that build visibility</h2>
+  <p>You don't need to reinvent your content every week. These four types cover the full spectrum from reach to conversion.</p>
+
+  <div class="post-grid">
+    <div class="pgc"><div class="pgi">🔥</div><div class="pgt">The Hook Post</div><p class="pgd">Broad reach. Counterintuitive first line. Gets shares and saves. Use weekly for algorithm growth.</p></div>
+    <div class="pgc"><div class="pgi">📖</div><div class="pgt">The Story Post</div><p class="pgd">Personal insight or client transformation. Builds trust. Most likely to get DMs and connection requests.</p></div>
+    <div class="pgc"><div class="pgi">🎯</div><div class="pgt">The Value Post</div><p class="pgd">Specific, actionable tip. Gets saved and shared. Positions you as the expert. 1–2x per week.</p></div>
+    <div class="pgc"><div class="pgi">✋</div><div class="pgt">The Hand-Raiser</div><p class="pgd">"Comment BUILD if you want X." Surfaces warm leads without hard-selling. 2x per month.</p></div>
+  </div>
+
+  <div class="gbox"><div class="glabel">💡 The MVB Ratio</div><p>3 value/story posts for every 1 hand-raiser. If you only post hand-raisers, your audience goes cold. If you never post them, you leave leads on the table.</p></div>
+
+  <div class="divider"></div>
+  <div class="slabel">Post Structure</div>
+  <h2>Anatomy of a post that performs</h2>
+
+  <div class="formula">
+    <div class="flabel">Post Structure Formula</div>
+    <div class="fparts">
+      <div class="fp hl">Hook Line</div><div class="fop">→</div>
+      <div class="fp">The Content<br><span style="font-size:11px;opacity:.6">insight / story / tips</span></div><div class="fop">→</div>
+      <div class="fp">The CTA<br><span style="font-size:11px;opacity:.6">question / comment prompt</span></div>
+    </div>
+  </div>
+
+  <p><strong>The hook line</strong> is the only thing people see before "see more." It needs to make them stop scrolling. Best hooks: a bold statement, a specific number, or a direct challenge to a common belief in your niche.</p>
+
+  <div class="divider"></div>
+  <div class="slabel">AI Prompt</div>
+  <h2>Generate your next post</h2>
+  <div class="prompt-box" id="p2a">
+    <div class="plabel">🤖 AI PROMPT — Hook Post</div>
+    <button class="cbtn" onclick="copyP('p2a')">Copy</button>
+    <pre>Write 3 LinkedIn hook posts for me.
+
+My niche: <em>[who you help]</em>
+My topic this week: <em>[the insight, lesson, or story you want to share]</em>
+Post type: Hook post (broad reach, counterintuitive opening)
+
+Structure each post:
+- Line 1: Bold/counterintuitive hook (max 10 words, no period)
+- Lines 2–8: The insight or tips (short paragraphs, 1–2 lines each)
+- Final line: A question that invites a comment
+
+Tone: Direct, warm, peer-level. No hype. No emojis unless essential.
+Length: 150–200 words per post.</pre>
+  </div>
+
+  <div class="divider"></div>
+  <div class="slabel">Lesson 3 Checklist</div>
+  <h2>Before you move on</h2>
+  <ul class="checklist">
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Identify which post type you'll use for your next 4 posts</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Run the Hook Post prompt with your next topic</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Pick a consistent posting time and block it in your calendar</span></li>
+    <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Comment on 5 posts by people in your niche after you post</span></li>
+  </ul>
+
+  <!-- FREE LESSONS COMPLETE BANNER -->
+  <div class="comp-banner">
+    <h3>Free lessons complete ✓</h3>
+    <p>You have the foundation: a converting profile, AI prompts to write it, and the content types that build visibility.<br><br>
+    Lessons 4–6 are where it becomes a system — the inbound lead mechanic, your AI content engine, and a full 30-day execution plan. Available to Premium members.</p>
+    <button class="btn btn-gold" onclick="goTo(3)">See Premium Lessons →</button>
+  </div>
+
+  <div class="lesson-nav">
+    <button class="btn btn-ghost" onclick="goTo(1)">← Lesson 2</button>
+    <button class="btn btn-primary" onclick="goTo(3)">Lesson 4: Inbound →</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LESSON 4 — INBOUND LEAD MECHANIC (PREMIUM)
+════════════════════════════════════════ -->
+<div class="lesson-page" id="lesson-3">
+  <div class="gate-wrap">
+    <div class="gate-blur">
+      <div class="intro-card"><p>Inbound leads don't come from posting more. They come from making it completely obvious, to the right person, that <strong>you solve a specific problem they have right now.</strong><br><br>This lesson is the full loop: from a stranger finding your post, to a qualified lead in your DMs.</p></div>
+      <div class="slabel">The Loop</div>
+      <h2>How a stranger becomes a lead</h2>
+      <div class="formula"><div class="flabel">The Inbound Journey</div><div class="fparts"><div class="fp">Post reaches<br>stranger</div><div class="fop">→</div><div class="fp hl">Profile converts<br>the click</div><div class="fop">→</div><div class="fp">Hand-raiser<br>surfaces intent</div><div class="fop">→</div><div class="fp">DM → Call</div></div></div>
+      <div class="slabel" style="margin-top:24px;">Hand-Raiser Types</div>
+      <h2>Three ways to surface warm leads</h2>
+      <div class="post-grid">
+        <div class="pgc"><div class="pgi">📦</div><div class="pgt">Resource Hand-Raiser</div><p class="pgd">Give away something useful. High volume, lower intent. Good for list building.</p></div>
+        <div class="pgc"><div class="pgi">🔍</div><div class="pgt">Audit Hand-Raiser</div><p class="pgd">Offer a short free review. Fewer responses, higher intent — every one is a warm lead.</p></div>
+      </div>
+    </div>
+    <div class="gate-overlay" id="gate-3">
+      <div class="gate-lock">🔒</div>
+      <div class="gate-title">Premium Lesson</div>
+      <p class="gate-sub">Lesson 4 covers the full inbound lead mechanic — the hand-raiser loop, three post types, the qualifying DM script, and AI prompts to write it all. Available to Premium members.</p>
+      <div class="gate-div"></div>
+      <div class="pw-row">
+        <input class="pw-input" type="password" id="pw-3" placeholder="Enter your premium password" onkeydown="if(event.key==='Enter')unlock(3)">
+        <button class="btn btn-primary" onclick="unlock(3)">Unlock</button>
+      </div>
+      <div class="pw-err" id="pwe-3"></div>
+      <p class="skool-link">Not yet Premium? <a href="https://skool.com/mvb" target="_blank">Upgrade at skool.com/mvb →</a></p>
+    </div>
+  </div>
+
+  <div id="unlocked-3" style="display:none;">
+    <div class="intro-card"><p>Inbound leads don't come from posting more. They come from making it completely obvious, to the right person, that <strong>you solve a specific problem they have right now.</strong><br><br>This lesson is the full loop: from a stranger finding your post, to a qualified lead in your DMs.</p></div>
+
+    <div class="slabel">The Loop</div>
+    <h2>How a stranger becomes a lead</h2>
+    <div class="formula"><div class="flabel">The Inbound Journey</div><div class="fparts"><div class="fp">Post reaches<br>stranger</div><div class="fop">→</div><div class="fp hl">Profile converts<br>the click</div><div class="fop">→</div><div class="fp">Hand-raiser<br>surfaces intent</div><div class="fop">→</div><div class="fp">DM → Call</div></div></div>
+    <p>Most people break this loop at step 2. Their content reaches people, but the profile doesn't convert the click. That's why Lessons 1 and 2 come first.</p>
+
+    <div class="divider"></div>
+    <div class="slabel">The Hand-Raiser Mechanic</div>
+    <h2>Turning engagement into conversations</h2>
+    <p>A hand-raiser post asks people to identify themselves as interested — without requiring them to buy anything or have a sales conversation.</p>
+    <div class="hbox"><p><strong>The formula:</strong> "If you're a [specific person] who wants [specific outcome], comment [WORD] and I'll send you [specific thing]."</p></div>
+    <p>When someone comments, you DM them. That DM is not a sales pitch — it's a qualifying conversation. You're finding out if they're a good fit for something deeper.</p>
+
+    <h3 style="margin-top:24px;">Three hand-raiser types</h3>
+    <div class="pc" id="hr1" style="margin-top:12px;">
+      <div class="pc-hd" onclick="toggleCard('hr1')"><div class="pc-icon">📦</div><div class="pc-meta"><div class="pc-title">The Resource Hand-Raiser</div><div class="pc-sub">Highest volume — easiest yes</div></div><div class="pc-chev">▾</div></div>
+      <div class="pc-body"><p>Give away something useful (checklist, template, framework). High response rate. Lower intent than the audit offer, but good for building a warm audience fast.</p><p><em>Example: "I put together a 5-point LinkedIn profile checklist that helped me go from zero to 3 inbound leads/week. Comment PROFILE and I'll send it over."</em></p></div>
+    </div>
+    <div class="pc" id="hr2" style="margin-top:8px;">
+      <div class="pc-hd" onclick="toggleCard('hr2')"><div class="pc-icon">🔍</div><div class="pc-meta"><div class="pc-title">The Audit Hand-Raiser</div><div class="pc-sub">Lower volume — higher intent</div></div><div class="pc-chev">▾</div></div>
+      <div class="pc-body"><p>Offer a short, free review of something specific (their profile, headline, About section). Fewer responses but every one is a warm lead with a real problem they want solved.</p><p><em>Example: "I'm reviewing 5 LinkedIn profiles this week and giving specific feedback. Comment REVIEW and I'll take a look."</em></p></div>
+    </div>
+    <div class="pc" id="hr3" style="margin-top:8px;">
+      <div class="pc-hd" onclick="toggleCard('hr3')"><div class="pc-icon">📅</div><div class="pc-meta"><div class="pc-title">The Call Hand-Raiser</div><div class="pc-sub">Lowest volume — highest intent</div></div><div class="pc-chev">▾</div></div>
+      <div class="pc-body"><p>Offer a short strategy call directly. Works best after you've been posting consistently for 4+ weeks and your audience trusts your content.</p><p><em>Example: "I have 3 spots open this month for a free Brand Clarity Call. If you're a coach posting but not getting leads, comment CLARITY and I'll send a link."</em></p></div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="slabel">AI Prompts</div>
+    <h2>Write your hand-raiser post</h2>
+    <div class="prompt-box" id="p3a">
+      <div class="plabel">🤖 AI PROMPT — Hand-Raiser Post</div>
+      <button class="cbtn" onclick="copyP('p3a')">Copy</button>
+      <pre>Write a LinkedIn hand-raiser post for me.
+
+I help: <em>[specific person]</em>
+The thing I'm offering: <em>[resource / audit / call — be specific]</em>
+The comment trigger word: <em>[e.g. PROFILE, REVIEW, BUILD]</em>
+Context: <em>[any recent wins or social proof I can reference]</em>
+
+Structure:
+- Opening: speak directly to the pain or goal
+- Middle: describe what you're giving away and who it's for
+- End: "Comment [WORD] and I'll send it over"
+
+Tone: direct, warm, no hype. 100–150 words max.</pre>
+    </div>
+
+    <h3 style="margin-top:20px;">Qualifying DM Script</h3>
+    <div class="prompt-box" id="p3b">
+      <div class="plabel">🤖 AI PROMPT — Follow-Up DM</div>
+      <button class="cbtn" onclick="copyP('p3b')">Copy</button>
+      <pre>Write a short DM I can send to someone who commented on my hand-raiser post.
+
+They commented: <em>[the trigger word they used]</em>
+What I offered them: <em>[the resource or thing you're sending]</em>
+My goal: send the thing, then open a conversation to understand their situation
+
+Keep it under 60 words. Warm, direct, not salesy.
+End with one simple question that opens a conversation — not a pitch.</pre>
+    </div>
+
+    <div class="divider"></div>
+    <div class="slabel">Lesson 4 Checklist</div>
+    <h2>Before you move on</h2>
+    <ul class="checklist">
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Decide which hand-raiser type fits where you are right now</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Run the hand-raiser post prompt and write your first one</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Write your follow-up DM script</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Schedule your hand-raiser post within the next 7 days</span></li>
+    </ul>
+
+    <div class="lesson-nav">
+      <button class="btn btn-ghost" onclick="goTo(2)">← Lesson 3</button>
+      <button class="btn btn-primary" onclick="goTo(4)">Lesson 5: AI System →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LESSON 5 — AI CONTENT SYSTEM (PREMIUM)
+════════════════════════════════════════ -->
+<div class="lesson-page" id="lesson-4">
+  <div class="gate-wrap">
+    <div class="gate-blur">
+      <div class="intro-card"><p>Posting manually every week burns most people out within a month. <strong>This lesson builds your AI content engine</strong> — a repeatable system that turns one idea into a week of content in under 30 minutes.</p></div>
+      <div class="slabel">The System</div><h2>One idea. Four posts. 30 minutes.</h2>
+      <div class="sblock"><div class="sbnum">01</div><div class="sbtitle">Build your Brand Prompt™</div><p>Your full AI context document — niche, voice, personas, offer. Feed it once. Use it forever.</p></div>
+      <div class="sblock"><div class="sbnum">02</div><div class="sbtitle">The Weekly Batch Method</div><p>Every Monday: 1 topic → 4 post drafts. Edit in 20 min. Schedule. Done for the week.</p></div>
+    </div>
+    <div class="gate-overlay" id="gate-4">
+      <div class="gate-lock">🔒</div>
+      <div class="gate-title">Premium Lesson</div>
+      <p class="gate-sub">Lesson 5 covers your full AI content engine — the Brand Prompt™, the weekly batch method, and the repurpose loop. Available to Premium members.</p>
+      <div class="gate-div"></div>
+      <div class="pw-row">
+        <input class="pw-input" type="password" id="pw-4" placeholder="Enter your premium password" onkeydown="if(event.key==='Enter')unlock(4)">
+        <button class="btn btn-primary" onclick="unlock(4)">Unlock</button>
+      </div>
+      <div class="pw-err" id="pwe-4"></div>
+      <p class="skool-link">Not yet Premium? <a href="https://skool.com/mvb" target="_blank">Upgrade at skool.com/mvb →</a></p>
+    </div>
+  </div>
+
+  <div id="unlocked-4" style="display:none;">
+    <div class="intro-card"><p>Posting manually every week burns most people out within a month. <strong>This lesson builds your AI content engine</strong> — a repeatable system that turns one idea into a week of content in under 30 minutes.</p></div>
+
+    <div class="slabel">The System</div>
+    <h2>One idea. Four posts. 30 minutes.</h2>
+    <div class="sblock"><div class="sbnum">01</div><div class="sbtitle">Build your Brand Prompt™</div><p>Your Brand Prompt is a structured context document you give to Claude or ChatGPT at the start of every content session. It contains your niche, voice, audience, and offer. Feed it once. Use it forever.</p></div>
+    <div class="sblock" style="margin-top:10px;"><div class="sbnum">02</div><div class="sbtitle">The Weekly Batch Method</div><p>Every Monday: pick one topic or insight. Run it through 4 post prompts (hook, story, value, hand-raiser). Edit and schedule. 30 minutes. Four posts. Done for the week.</p></div>
+    <div class="sblock" style="margin-top:10px;"><div class="sbnum">03</div><div class="sbtitle">The Repurpose Loop</div><p>When a post performs well (saves, comments, DMs), don't move on. Run it through the repurpose prompt: AI generates 3 variations. You now have 3 more weeks of content from one idea that already worked.</p></div>
+
+    <div class="divider"></div>
+    <div class="slabel">AI Prompts</div>
+    <h2>Build your Brand Prompt™</h2>
+    <div class="gbox"><div class="glabel">💡 Do this once</div><p>Complete this prompt fully. Save the output as your permanent context document. Paste it before every content session going forward.</p></div>
+    <div class="prompt-box" id="p4a">
+      <div class="plabel">🤖 BRAND PROMPT BUILDER</div>
+      <button class="cbtn" onclick="copyP('p4a')">Copy</button>
+      <pre>You are my LinkedIn content strategist and ghostwriter. Here is my full context — use this every time I ask you to write content.
+
+WHO I AM:
+Name: <em>[your name]</em>
+My niche: <em>[who you help and with what]</em>
+My methodology: <em>[your framework or approach]</em>
+My community/offer: <em>[what you sell or run]</em>
+
+MY AUDIENCE:
+Primary persona: <em>[describe your ideal client in 2–3 sentences]</em>
+Their biggest problem: <em>[be specific]</em>
+Their desired outcome: <em>[what they want to achieve]</em>
+What they've already tried: <em>[what hasn't worked for them]</em>
+
+MY VOICE:
+Tone: Direct, warm, peer-level. Not guru-ish. Not corporate.
+I avoid: hype words, vague promises, countdown urgency
+I sound like: <em>[3 words that describe your writing style]</em>
+Example post I love: <em>[paste one of your best posts here]</em>
+
+MY OFFER:
+Free entry point: <em>[e.g. community, lead magnet]</em>
+Paid offer: <em>[brief description]</em>
+CTA I use most: <em>[e.g. "Comment BUILD", "DM me CLARITY"]</em>
+
+Confirm you have this context and are ready to write content.</pre>
+    </div>
+
+    <h3 style="margin-top:22px;">Weekly Batch Prompt</h3>
+    <div class="prompt-box" id="p4b">
+      <div class="plabel">🤖 WEEKLY BATCH</div>
+      <button class="cbtn" onclick="copyP('p4b')">Copy</button>
+      <pre>[Paste your Brand Prompt first]
+
+Now write 4 LinkedIn posts based on this week's topic:
+Topic/insight: <em>[what you want to post about this week]</em>
+
+Post 1: Hook post (counterintuitive opening, broad reach)
+Post 2: Story post (personal insight or client transformation)
+Post 3: Value post (specific actionable tip, 3–5 bullet format)
+Post 4: Hand-raiser post (Comment [WORD] to receive [thing])
+
+Keep each post 150–200 words. Write in my voice as defined above.</pre>
+    </div>
+
+    <ul class="checklist" style="margin-top:28px;">
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Complete your Brand Prompt™ document and save it</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Run your first weekly batch using the batch prompt</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Edit all 4 posts into your voice before scheduling</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Schedule using LinkedIn native scheduler or Buffer</span></li>
+    </ul>
+
+    <div class="lesson-nav">
+      <button class="btn btn-ghost" onclick="goTo(3)">← Lesson 4</button>
+      <button class="btn btn-primary" onclick="goTo(5)">Lesson 6: 30-Day Sprint →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LESSON 6 — 30-DAY SPRINT (PREMIUM)
+════════════════════════════════════════ -->
+<div class="lesson-page" id="lesson-5">
+  <div class="gate-wrap">
+    <div class="gate-blur">
+      <div class="intro-card"><p>You have the system. Now you need the plan. <strong>The 30-Day LinkedIn Sprint gives you a complete week-by-week posting rhythm,</strong> a swipe-file of 8 proven hook starters, and a monthly review prompt to compound your results.</p></div>
+      <div class="slabel">The Plan</div><h2>Week-by-week rhythm</h2>
+      <div class="wrow"><div class="wlabel">Week 1</div><div class="wcontent">Foundation: profile live, first hook post, first story post. No hand-raisers yet.</div></div>
+      <div class="wrow" style="margin-top:6px;"><div class="wlabel">Week 2</div><div class="wcontent">Consistency: 3 posts, value-heavy. Comment on 10 posts per day. Build algorithm signal.</div></div>
+    </div>
+    <div class="gate-overlay" id="gate-5">
+      <div class="gate-lock">🔒</div>
+      <div class="gate-title">Premium Lesson</div>
+      <p class="gate-sub">Lesson 6 is your full 30-day execution plan — week-by-week rhythm, hook starter swipe file, and monthly review framework. Available to Premium members.</p>
+      <div class="gate-div"></div>
+      <div class="pw-row">
+        <input class="pw-input" type="password" id="pw-5" placeholder="Enter your premium password" onkeydown="if(event.key==='Enter')unlock(5)">
+        <button class="btn btn-primary" onclick="unlock(5)">Unlock</button>
+      </div>
+      <div class="pw-err" id="pwe-5"></div>
+      <p class="skool-link">Not yet Premium? <a href="https://skool.com/mvb" target="_blank">Upgrade at skool.com/mvb →</a></p>
+    </div>
+  </div>
+
+  <div id="unlocked-5" style="display:none;">
+    <div class="intro-card"><p>You have the system. Now you need the plan. <strong>The 30-Day LinkedIn Sprint gives you a complete week-by-week rhythm,</strong> a hook starter swipe file, and a monthly review framework to compound your results over time.</p></div>
+
+    <div class="slabel">Week-by-Week Rhythm</div>
+    <h2>Your 30-day execution plan</h2>
+    <div class="wrow"><div class="wlabel">Week 1</div><div class="wcontent"><strong>Foundation.</strong> Profile live and optimised. First hook post. First story post. No hand-raisers yet — build trust before you ask for anything. Goal: show up twice.</div></div>
+    <div class="wrow" style="margin-top:6px;"><div class="wlabel">Week 2</div><div class="wcontent"><strong>Consistency.</strong> 3 posts this week. Value-heavy content. Spend 10 min/day commenting on posts by people in your niche. This builds your algorithm signal faster than posting alone.</div></div>
+    <div class="wrow" style="margin-top:6px;"><div class="wlabel">Week 3</div><div class="wcontent"><strong>First hand-raiser.</strong> Run your resource or audit hand-raiser. Track who comments. DM every one within 24 hours. Run your first qualifying conversations.</div></div>
+    <div class="wrow" style="margin-top:6px;"><div class="wlabel">Week 4</div><div class="wcontent"><strong>Review + repurpose.</strong> Find your top-performing post. Repurpose it with the batch prompt. Book 2 Brand Clarity Calls from hand-raiser responses. Adjust what isn't working.</div></div>
+
+    <div class="divider"></div>
+    <div class="slabel">Hook Starters Swipe File</div>
+    <h2>8 hooks you can use this month</h2>
+    <p>Adapt each one to your niche. Don't copy-paste as-is — make them specific to your situation.</p>
+    <div class="hook-grid">
+      <div class="hook-item">Most [professionals] I know are [doing X wrong].</div>
+      <div class="hook-item">I turned down a [£X] client last year. Here's why it was the right call.</div>
+      <div class="hook-item">Nobody talks about this part of [getting clients on LinkedIn].</div>
+      <div class="hook-item">The best [coaching] advice I ever got was free.</div>
+      <div class="hook-item">[X] months ago I had zero inbound. Here's what changed.</div>
+      <div class="hook-item">Stop trying to go viral. Do this instead.</div>
+      <div class="hook-item">A client DM'd me this morning. Here's what they said.</div>
+      <div class="hook-item">Your LinkedIn profile is working against you. Here's how to tell.</div>
+    </div>
+
+    <div class="divider"></div>
+    <div class="slabel">Monthly Review</div>
+    <h2>End-of-month check-in prompt</h2>
+    <div class="prompt-box" id="p5a">
+      <div class="plabel">🤖 MONTHLY REVIEW PROMPT</div>
+      <button class="cbtn" onclick="copyP('p5a')">Copy</button>
+      <pre>[Paste your Brand Prompt first]
+
+I've been posting on LinkedIn for [X weeks/months]. Help me review my results.
+
+My stats this month:
+- Posts published: <em>[number]</em>
+- Average impressions per post: <em>[number or "don't know yet"]</em>
+- Best performing post: <em>[paste it or describe it]</em>
+- Hand-raiser results: <em>[comments received, DMs sent, calls booked]</em>
+- What felt hardest: <em>[be honest]</em>
+
+Based on this, tell me:
+1. What's working that I should do more of
+2. What I should stop or change
+3. The one thing to focus on next month
+4. A specific topic suggestion for my next hand-raiser post</pre>
+    </div>
+
+    <ul class="checklist" style="margin-top:28px;">
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Save the week-by-week rhythm somewhere visible</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Pick 4 hook starters for this month and note your topic for each</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Schedule your end-of-month review in your calendar now</span></li>
+      <li onclick="toggleCheck(this)"><div class="chkbox">✓</div><span>Share your Month 1 results in the community</span></li>
+    </ul>
+
+    <div class="comp-banner">
+      <h3>LinkedIn Module complete 🎉</h3>
+      <p>Profile ✓ &nbsp; Profile AI ✓ &nbsp; Content ✓ &nbsp; Inbound ✓ &nbsp; AI System ✓ &nbsp; 30-Day Sprint ✓<br><br>You have everything you need. Now it's just about showing up.</p>
+      <button class="btn btn-gold">Post your wins in the community →</button>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-ghost" onclick="goTo(4)">← Lesson 5</button>
+      <button class="btn btn-primary" disabled>Module complete ✓</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end lesson-body -->
+
+<div class="lesson-footer">
+  <em>Authenticity over polish. Clarity over noise.</em> &nbsp;|&nbsp; <strong>MVB Lab</strong> &nbsp;|&nbsp; skool.com/mvb
+</div>
+
+<script>
+const PW = 'LINKEDINMASTERYWITHANNA2026';
+
+function goTo(i) {
+  document.querySelectorAll('.lesson-page').forEach(p => p.classList.remove('active'));
+  document.getElementById('lesson-' + i).classList.add('active');
+  document.querySelectorAll('.lesson-tab').forEach((t, idx) => {
+    t.classList.remove('active','done');
+    if (idx < i) t.classList.add('done');
+    if (idx === i) t.classList.add('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function unlock(i) {
+  const val = document.getElementById('pw-' + i).value.trim();
+  const err = document.getElementById('pwe-' + i);
+  if (val === PW) {
+    document.getElementById('gate-' + i).style.display = 'none';
+    document.getElementById('unlocked-' + i).style.display = 'block';
+    const badge = document.getElementById('badge-' + i);
+    if (badge) { badge.textContent = 'Unlocked'; badge.classList.add('unlocked'); }
+    err.textContent = '';
+  } else {
+    err.textContent = 'Incorrect password. Check your premium welcome message.';
+    const inp = document.getElementById('pw-' + i);
+    inp.style.borderColor = 'var(--coral)';
+    setTimeout(() => { inp.style.borderColor = ''; err.textContent = ''; }, 3000);
+  }
+}
+
+function toggleCard(id) { document.getElementById(id).classList.toggle('open'); }
+function toggleCheck(el) { el.classList.toggle('checked'); }
+
+function updateHeadline() {
+  const who = document.getElementById('who').value.trim();
+  const outcome = document.getElementById('outcome').value.trim();
+  const method = document.getElementById('method').value.trim();
+  const out = document.getElementById('headline-output');
+  if (!who && !outcome) { out.innerHTML = '<span class="ph">Your headline will appear here as you type...</span>'; return; }
+  let h = 'I help ' + (who || '[who you help]') + ' ' + (outcome || '[achieve this outcome]');
+  if (method) h += ' — ' + method;
+  const n = h.length;
+  const c = n > 200 ? '#FF5C35' : n > 180 ? '#FFD166' : 'rgba(255,255,255,.4)';
+  out.innerHTML = h + '<div style="font-size:11px;font-weight:400;margin-top:10px;color:' + c + '">' + n + '/220 characters</div>';
+}
+
+function copyP(id) {
+  const pre = document.querySelector('#' + id + ' pre');
+  navigator.clipboard.writeText(pre.innerText).then(() => {
+    const btn = document.querySelector('#' + id + ' .cbtn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+  });
+}
+</script>
+</body>
+</html>
