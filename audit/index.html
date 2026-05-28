@@ -1,1 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Profile Grader — Anna Stoilova</title>
+<meta name="description" content="Get your LinkedIn profile scored in 2 minutes. Free tool by Anna Stoilova.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #1A1A2E;
+    --bg-lighter: #222240;
+    --bg-card: #2A2A48;
+    --gold: #D4A574;
+    --violet: #6B4E8C;
+    --coral: #E08572;
+    --green: #10bf7a;
+    --red: #E84855;
+    --yellow: #F0A500;
+    --white: #F5F0EB;
+    --muted: #8888A0;
+    --font-headline: 'Plus Jakarta Sans', sans-serif;
+    --font-subhead: 'Outfit', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
 
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--font-body);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .accent-line-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold), var(--violet), var(--coral));
+    z-index: 100;
+  }
+
+  .page {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px 60px;
+    position: relative;
+  }
+
+  .corner-accent-bl {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at bottom left, rgba(212,165,116,0.06), transparent 70%);
+    pointer-events: none;
+  }
+
+  .corner-accent-tr {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle at top right, rgba(107,78,140,0.08), transparent 70%);
+    pointer-events: none;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(217,119,87,0.12);
+    border: 1px solid rgba(217,119,87,0.25);
+    border-radius: 28px;
+    padding: 8px 20px;
+    margin-bottom: 28px;
+    color: var(--coral);
+    font-family: var(--font-subhead);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  h1 {
+    font-family: var(--font-headline);
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    color: var(--white);
+  }
+
+  h1 .gold { color: var(--gold); }
+
+  .subtitle {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--muted);
+    margin-bottom: 40px;
+    max-width: 520px;
+  }
+
+  .subtitle strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .proof-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .proof-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(107,78,140,0.12);
+    border: 1px solid rgba(107,78,140,0.2);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  .proof-badge .emoji { font-size: 14px; }
+
+  .form-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 0 60px rgba(107,78,140,0.1), 0 20px 40px rgba(0,0,0,0.2);
+    margin-bottom: 32px;
+  }
+
+  .form-card label {
+    display: block;
+    font-family: var(--font-subhead);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+
+  .input-row { display: flex; gap: 12px; }
+
+  .input-row input[type="email"] {
+    flex: 1;
+    background: var(--bg);
+    border: 1px solid rgba(136,136,160,0.2);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .input-row input[type="email"]::placeholder { color: var(--muted); }
+  .input-row input[type="email"]:focus { border-color: var(--gold); }
+
+  .submit-btn {
+    background: linear-gradient(135deg, var(--violet), #8B5FBF);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    padding: 14px 28px;
+    font-family: var(--font-subhead);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(107,78,140,0.3);
+  }
+
+  .submit-btn:active { transform: translateY(0); }
+
+  .consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .consent-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    accent-color: var(--gold);
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  .consent-row label {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    cursor: pointer;
+  }
+
+  .disclaimer {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  .what-you-get { margin-top: 32px; }
+
+  .what-you-get h3 {
+    font-family: var(--font-subhead);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .get-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .get-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .get-list li .arrow {
+    color: var(--gold);
+    font-weight: 600;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .brand-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(136,136,160,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .brand-footer .name {
+    font-family: var(--font-subhead);
+    font-size: 14px;
+    color: var(--muted);
+    opacity: 0.6;
+  }
+
+  .brand-footer .socials a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    margin-left: 16px;
+    opacity: 0.6;
+    transition: opacity 0.2s, color 0.2s;
+  }
+
+  .brand-footer .socials a:hover { opacity: 1; color: var(--gold); }
+
+  .hidden { display: none !important; }
+
+  /* ─── QUIZ ─── */
+
+  .quiz-progress {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 36px;
+  }
+
+  .quiz-progress .step {
+    flex: 1;
+    height: 4px;
+    background: rgba(136,136,160,0.15);
+    border-radius: 2px;
+    transition: background 0.3s;
+  }
+
+  .quiz-progress .step.done { background: var(--gold); }
+  .quiz-progress .step.active { background: var(--violet); }
+
+  .quiz-question-num {
+    font-family: var(--font-subhead);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+
+  .quiz-question-text {
+    font-family: var(--font-headline);
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 28px;
+    color: var(--white);
+  }
+
+  .quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quiz-option {
+    background: var(--bg-card);
+    border: 1px solid rgba(136,136,160,0.15);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .quiz-option:hover {
+    border-color: var(--gold);
+    background: rgba(212,165,116,0.06);
+  }
+
+  .quiz-option:active {
+    transform: scale(0.98);
+  }
+
+  /* ─── RESULTS ─── */
+
+  .results-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 36px 32px;
+    box-shadow: 0 0 60px rgba(107,78,140,0.1), 0 20px 40px rgba(0,0,0,0.2);
+    margin-bottom: 28px;
+  }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .results-score {
+    font-family: var(--font-headline);
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .results-score .total { color: var(--white); }
+  .results-score .of { color: var(--muted); font-size: 32px; font-weight: 400; }
+
+  .results-label {
+    font-family: var(--font-subhead);
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .results-label.strong { color: var(--green); }
+  .results-label.ok { color: var(--yellow); }
+  .results-label.weak { color: var(--red); }
+
+  .results-bars { margin-bottom: 28px; }
+
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .bar-label {
+    width: 90px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--muted);
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(136,136,160,0.1);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+
+  .bar-fill.red { background: var(--red); }
+  .bar-fill.yellow { background: var(--yellow); }
+  .bar-fill.green { background: var(--green); }
+
+  .bar-score {
+    width: 36px;
+    font-size: 13px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .bar-score.red { color: var(--red); }
+  .bar-score.yellow { color: var(--yellow); }
+  .bar-score.green { color: var(--green); }
+
+  .top-fix {
+    background: rgba(212,165,116,0.08);
+    border: 1px solid rgba(212,165,116,0.2);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .top-fix-label {
+    font-family: var(--font-subhead);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .top-fix-text {
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* ─── PROMPT ─── */
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 36px 0 24px;
+  }
+
+  .section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: rgba(136,136,160,0.15);
+  }
+
+  .section-divider .label {
+    font-family: var(--font-subhead);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+
+  .prompt-card {
+    background: var(--bg);
+    border: 1px solid rgba(212,165,116,0.15);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .prompt-card .prompt-label {
+    font-family: var(--font-subhead);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+  }
+
+  .prompt-text {
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--white);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-card);
+    border: 1px solid rgba(212,165,116,0.2);
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-family: var(--font-subhead);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--gold);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 32px;
+  }
+
+  .copy-btn:hover {
+    background: rgba(212,165,116,0.1);
+    border-color: var(--gold);
+  }
+
+  .copy-btn.copied { color: var(--green); border-color: var(--green); }
+
+  .dm-cta {
+    background: linear-gradient(135deg, rgba(107,78,140,0.15), rgba(212,165,116,0.1));
+    border: 1px solid rgba(107,78,140,0.2);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .dm-cta .dm-icon { font-size: 24px; flex-shrink: 0; }
+
+  .dm-cta p {
+    font-size: 15px;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .dm-cta a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .dm-cta a:hover { color: var(--coral); }
+
+  @media (max-width: 600px) {
+    .page { padding: 60px 20px 40px; }
+    .input-row { flex-direction: column; }
+    .form-card { padding: 24px; }
+    .results-card { padding: 24px 20px; }
+    .bar-label { width: 70px; font-size: 12px; }
+    .results-score { font-size: 48px; }
+  }
+</style>
+</head>
+<body>
+<div class="accent-line-top"></div>
+<div class="corner-accent-bl"></div>
+<div class="corner-accent-tr"></div>
+
+<div class="page">
+
+  <!-- STATE 1: EMAIL GATE -->
+  <div id="gated">
+    <div class="badge">Free LinkedIn Tool</div>
+    <h1>Get your LinkedIn profile <span class="gold">scored in 2 minutes</span></h1>
+    <p class="subtitle">
+      The exact audit I use with every client. <strong>Free.</strong>
+    </p>
+
+    <div class="proof-badges">
+      <div class="proof-badge"><span class="emoji">🏆</span> LinkedIn Top Voice 2024 & 2025</div>
+      <div class="proof-badge"><span class="emoji">📊</span> 100K+ users grown organically</div>
+    </div>
+
+    <div class="form-card">
+      <form action="https://app.kit.com/forms/9496342/subscriptions" method="post" id="kit-form">
+        <label for="email">Email Address</label>
+        <div class="input-row">
+          <input type="email" name="email_address" id="email" placeholder="you@agency.com" required>
+          <button type="submit" class="submit-btn">Get Access</button>
+        </div>
+        <div class="consent-row">
+          <input type="checkbox" id="consent" required>
+          <label for="consent">I agree to receive emails from Anna. Unsubscribe anytime.</label>
+        </div>
+        <p class="disclaimer">No spam. I'll only send you stuff about LinkedIn growth and AI content systems.</p>
+      </form>
+    </div>
+
+    <div class="what-you-get">
+      <h3>What you'll get</h3>
+      <ul class="get-list">
+        <li><span class="arrow">→</span> A profile score out of 50 across 5 key areas</li>
+        <li><span class="arrow">→</span> Instant feedback on your weakest area</li>
+        <li><span class="arrow">→</span> A Claude prompt for detailed rewrites</li>
+        <li><span class="arrow">→</span> The single highest-impact thing to fix first</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- STATE 2: QUIZ -->
+  <div id="quiz" class="hidden">
+    <div class="quiz-progress" id="progress"></div>
+    <div class="quiz-question-num" id="question-num"></div>
+    <div class="quiz-question-text" id="question-text"></div>
+    <div class="quiz-options" id="options"></div>
+  </div>
+
+  <!-- STATE 3: RESULTS -->
+  <div id="results" class="hidden">
+    <div class="results-card">
+      <div class="results-header">
+        <div class="results-score"><span class="total" id="score-total">0</span> <span class="of">/ 50</span></div>
+        <div class="results-label" id="score-label"></div>
+      </div>
+      <div class="results-bars" id="bars"></div>
+      <div class="top-fix">
+        <div class="top-fix-label">Your #1 Fix</div>
+        <div class="top-fix-text" id="top-fix-text"></div>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <div class="line"></div>
+      <div class="label">Want the deep fix?</div>
+      <div class="line"></div>
+    </div>
+
+    <p style="font-size: 15px; color: var(--muted); margin-bottom: 16px; line-height: 1.6;">
+      Your quick score above. Copy the prompt below, paste it into <a href="https://claude.ai" target="_blank" style="color: var(--gold);">claude.ai</a> with your profile text, and get detailed rewrites for every area.
+    </p>
+
+    <div class="prompt-card">
+      <div class="prompt-label">The Prompt — Copy This</div>
+      <div class="prompt-text" id="prompt-content">You are a LinkedIn profile strategist. I'm going to share my LinkedIn profile with you. Audit it like a coach would — honest, specific, no fluff.
+
+Here's my profile:
+[Paste your LinkedIn profile text here — headline, About section, Experience, Featured section if you have one]
+
+Score me 1-10 on each of these 5 areas:
+
+1️⃣ HEADLINE — Does it say who I help and what outcome I deliver? Or does it just list job titles?
+
+2️⃣ ABOUT SECTION — Does it read like a story that makes someone want to work with me? Or does it read like a CV?
+
+3️⃣ BANNER — If someone only saw my banner, would they know what I do? Or does it just look nice?
+
+4️⃣ FEATURED SECTION — Is there a clear next step? A lead magnet, a link, a reason to click? Or is it empty?
+
+5️⃣ FIRST 3 LINES — If someone only reads the first 3 lines of my About section, would they keep reading? Or would they scroll past?
+
+For each area:
+→ Give me my score (1-10)
+→ Tell me exactly what's wrong
+→ Give me a rewrite I can use today
+
+Then give me my overall profile score out of 50 and the single highest-impact thing I should fix first.</div>
+    </div>
+
+    <button class="copy-btn" id="copy-btn" onclick="copyPrompt()">📋 Copy prompt to clipboard</button>
+
+    <div class="dm-cta">
+      <div class="dm-icon">📩</div>
+      <p>Run a business and want clients from LinkedIn? <a href="https://linkedin.com/in/annastoilova" target="_blank">DM me 'brand' on LinkedIn</a> and let's see if we're a fit.</p>
+    </div>
+  </div>
+
+  <div class="brand-footer">
+    <div class="name">Anna Stoilova</div>
+    <div class="socials">
+      <a href="https://linkedin.com/in/annastoilova" target="_blank">LinkedIn</a>
+      <a href="https://www.skool.com/mvb/about" target="_blank">Free Community</a>
+      <a href="https://www.youtube.com/@mvblab" target="_blank">YouTube</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    area: "Headline",
+    text: "What does your LinkedIn headline look like right now?",
+    options: [
+      { text: "My job title and company name", score: 2 },
+      { text: "A list of skills or services separated by |", score: 4 },
+      { text: "Who I help + the specific outcome I deliver", score: 10 },
+      { text: "Something clever, funny, or vague", score: 3 }
+    ],
+    fix: "Your headline is the first thing people see. If it lists job titles instead of who you help and what outcome you deliver, people scroll past. Rewrite it as: [Who you help] + [Outcome you deliver]. Example: 'I help agency owners get clients from LinkedIn using AI'"
+  },
+  {
+    area: "About",
+    text: "How does your About section start?",
+    options: [
+      { text: "\"I am a [job title] with [X] years of experience in...\"", score: 2 },
+      { text: "A question or bold statement about my industry", score: 8 },
+      { text: "I don't really have an About section", score: 0 },
+      { text: "A story about why I do what I do", score: 6 }
+    ],
+    fix: "Your About section is reading like a CV. Nobody hires a CV. Start with a hook — a question, a bold statement, or a pain point your ideal client recognises. Then tell the story of how you solve it. End with a clear CTA."
+  },
+  {
+    area: "Banner",
+    text: "What does your LinkedIn banner look like?",
+    options: [
+      { text: "The default blue LinkedIn banner", score: 0 },
+      { text: "A nice photo or abstract image", score: 3 },
+      { text: "Text that explains what I do + a CTA or URL", score: 10 },
+      { text: "My company logo on a solid colour", score: 4 }
+    ],
+    fix: "Your banner is wasted space. It's the biggest visual on your profile and most people use a generic image. Add text that says what you do, who you help, and include a URL or QR code. This alone can double your profile conversion."
+  },
+  {
+    area: "Featured",
+    text: "What's in your Featured section right now?",
+    options: [
+      { text: "Nothing — it's empty", score: 0 },
+      { text: "A couple of old posts", score: 3 },
+      { text: "A link to my website or booking page", score: 8 },
+      { text: "A lead magnet + my best post + a booking link", score: 10 }
+    ],
+    fix: "Your Featured section is empty or generic. This is where profile views convert to leads. Add a link to your booking page or a free resource. Make it the obvious next step for anyone visiting your profile."
+  },
+  {
+    area: "Content",
+    text: "How often do you post on LinkedIn?",
+    options: [
+      { text: "Rarely or never", score: 1 },
+      { text: "About once a week", score: 6 },
+      { text: "2-4 times per week, consistently", score: 10 },
+      { text: "Every single day", score: 8 }
+    ],
+    fix: "You're not posting enough to stay visible. LinkedIn rewards consistency over volume. Start with 2-3 posts per week — share takes from your work, client results, or opinions on your industry. The algorithm favours people who show up regularly."
+  }
+];
+
+let currentQ = 0;
+let scores = [];
+
+function showState(id) {
+  ['gated', 'quiz', 'results'].forEach(s => document.getElementById(s).classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function startQuiz() {
+  currentQ = 0;
+  scores = [];
+  showState('quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = QUESTIONS[currentQ];
+
+  let progressHTML = '';
+  for (let i = 0; i < QUESTIONS.length; i++) {
+    let cls = 'step';
+    if (i < currentQ) cls += ' done';
+    else if (i === currentQ) cls += ' active';
+    progressHTML += `<div class="${cls}"></div>`;
+  }
+  document.getElementById('progress').innerHTML = progressHTML;
+
+  document.getElementById('question-num').textContent = `Question ${currentQ + 1} of ${QUESTIONS.length}`;
+  document.getElementById('question-text').textContent = q.text;
+
+  let optionsHTML = '';
+  q.options.forEach((opt, idx) => {
+    optionsHTML += `<div class="quiz-option" onclick="answer(${idx})">${opt.text}</div>`;
+  });
+  document.getElementById('options').innerHTML = optionsHTML;
+}
+
+function answer(idx) {
+  const q = QUESTIONS[currentQ];
+  scores.push({ area: q.area, score: q.options[idx].score, fix: q.fix });
+  currentQ++;
+
+  if (currentQ < QUESTIONS.length) {
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  const total = scores.reduce((sum, s) => sum + s.score, 0);
+  const maxTotal = QUESTIONS.length * 10;
+
+  document.getElementById('score-total').textContent = total;
+
+  const label = document.getElementById('score-label');
+  if (total >= 40) {
+    label.textContent = '🔥 Strong Profile';
+    label.className = 'results-label strong';
+  } else if (total >= 25) {
+    label.textContent = '⚠️ Good Foundation — Needs Work';
+    label.className = 'results-label ok';
+  } else {
+    label.textContent = '🔴 Needs Attention';
+    label.className = 'results-label weak';
+  }
+
+  let barsHTML = '';
+  scores.forEach(s => {
+    const pct = (s.score / 10) * 100;
+    let color = 'green';
+    if (s.score <= 3) color = 'red';
+    else if (s.score <= 6) color = 'yellow';
+    barsHTML += `
+      <div class="bar-row">
+        <div class="bar-label">${s.area}</div>
+        <div class="bar-track"><div class="bar-fill ${color}" style="width: 0%"></div></div>
+        <div class="bar-score ${color}">${s.score}/10</div>
+      </div>`;
+  });
+  document.getElementById('bars').innerHTML = barsHTML;
+
+  const weakest = scores.reduce((min, s) => s.score < min.score ? s : min);
+  document.getElementById('top-fix-text').textContent = weakest.fix;
+
+  showState('results');
+
+  setTimeout(() => {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const pct = (parseFloat(bar.style.width.replace('%', '')) || 0);
+      bar.style.width = bar.parentElement.previousElementSibling
+        ? ((parseInt(bar.closest('.bar-row').querySelector('.bar-score').textContent) / 10) * 100) + '%'
+        : pct + '%';
+    });
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      const row = bar.closest('.bar-row');
+      const scoreText = row.querySelector('.bar-score').textContent;
+      const val = parseInt(scoreText);
+      bar.style.width = (val / 10 * 100) + '%';
+    });
+  }, 100);
+}
+
+function copyPrompt() {
+  const text = document.getElementById('prompt-content').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.innerHTML = '📋 Copy prompt to clipboard';
+      btn.classList.remove('copied');
+    }, 3000);
+  });
+}
+
+const params = new URLSearchParams(window.location.search);
+if (params.has('unlocked') || params.get('success') === 'true') {
+  startQuiz();
+}
+
+document.getElementById('kit-form').addEventListener('submit', function(e) {
+  // Allow normal form submission to Kit — Kit will redirect back with ?unlocked=true
+});
+</script>
+</body>
+</html>
